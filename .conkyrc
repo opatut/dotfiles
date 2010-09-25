@@ -1,0 +1,54 @@
+#avoid flicker
+double_buffer yes
+
+#own window to run simultanious 2 or more conkys
+own_window yes
+own_window_transparent no
+own_window_type normal
+own_window_hints undecorate,below,sticky,skip_taskbar,skip_pager 
+
+
+
+#borders
+draw_borders no
+#border_margin 2
+
+#shades
+draw_shades no
+
+#position
+gap_x 10
+gap_y 40
+alignment bottom_right
+
+#behaviour
+update_interval 5
+
+#colour
+default_color  ccccff
+
+#default_shade_color 000000
+own_window_transparent yes
+#own_window_argb_value 00000088
+#own_window_colour 000000
+
+#font
+use_xft yes
+xftfont Consolas:pixelsize=12
+#to prevent window from moving
+use_spacer no
+#minimum_size 1440 0
+
+
+mpd_host localhost
+mpd_port 6600
+$mpd_artist = ""
+
+TEXT
+Temp:   ${alignr}${color ffffff}${if_match ${acpitemp} > 75} ${color ff0000}${endif}${acpitemp}°C${color}
+HD:     ${alignr}${color ffffff}${fs_used_perc /} % ${fs_bar 6,50}${color}
+CPU:    ${alignr}${color ffffff}${cpu} % ${cpubar 6,50}${color}
+RAM:    ${alignr}${color ffffff}${memperc} % ${membar 6,50}${color}
+Bat:    ${alignr}${color ffffff}${battery_percent BAT0}% ${battery_bar 6,50}${color}
+${font}Uptime: ${alignr}${color ffffff}${uptime}${color}
+IP: ${font :size=7}${alignr}${color ffffff}${addr wlan0}${color}

@@ -1,0 +1,56 @@
+#avoid flicker
+double_buffer yes
+
+#own window to run simultanious 2 or more conkys
+own_window yes
+own_window_transparent no
+own_window_type normal
+own_window_hints undecorate,below,sticky,skip_taskbar,skip_pager 
+
+
+
+#borders
+draw_borders no
+#border_margin 2
+
+#shades
+draw_shades no
+
+#position
+gap_x 10
+gap_y 40
+alignment bottom_left
+
+#behaviour
+update_interval 1
+
+#colour
+default_color  ccccff
+
+#default_shade_color 000000
+own_window_transparent yes
+#own_window_argb_value 00000088
+#own_window_colour 000000
+
+#font
+use_xft yes
+xftfont DejaVuSans:pixelsize=11
+#to prevent window from moving
+use_spacer no
+#minimum_size 1440 0
+
+
+mpd_host localhost
+mpd_port 6600
+$mpd_artist = ""
+
+color1 ccccff # Headers
+color2 ffffff # Line Items
+color3 88AAFF
+
+minimum_size 200 0
+
+TEXT
+${color2}Upload:  ${color1}${alignr}${upspeedf wlan0}KiB/s ${alignr}${upspeedgraph wlan0 8,75 000000 000000}
+${color2}Download:${color1}${alignr}${downspeedf wlan0}KiB/s ${alignr}${downspeedgraph wlan0 8,75 000000 000000}
+${color2}IP:      ${color1}${alignr}${addr wlan0}

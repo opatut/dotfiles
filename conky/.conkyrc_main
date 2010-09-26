@@ -29,12 +29,11 @@ default_color  ccccff
 
 #default_shade_color 000000
 own_window_transparent yes
-#own_window_argb_value 00000088
 #own_window_colour 000000
 
 #font
 use_xft yes
-xftfont Consolas:pixelsize=12
+xftfont DejaVuSans:pixelsize=11
 #to prevent window from moving
 use_spacer no
 #minimum_size 1440 0
@@ -43,12 +42,14 @@ use_spacer no
 mpd_host localhost
 mpd_port 6600
 $mpd_artist = ""
+color1 ccccff
+color2 ffffff
+color3 88AAFF
 
 TEXT
-Temp:   ${alignr}${color ffffff}${if_match ${acpitemp} > 75} ${color ff0000}${endif}${acpitemp}°C${color}
-HD:     ${alignr}${color ffffff}${fs_used_perc /} % ${fs_bar 6,50}${color}
-CPU:    ${alignr}${color ffffff}${cpu} % ${cpubar 6,50}${color}
-RAM:    ${alignr}${color ffffff}${memperc} % ${membar 6,50}${color}
-Bat:    ${alignr}${color ffffff}${battery_percent BAT0}% ${battery_bar 6,50}${color}
-${font}Uptime: ${alignr}${color ffffff}${uptime}${color}
-IP: ${font :size=7}${alignr}${color ffffff}${addr wlan0}${color}
+${color2}Temp:   ${alignr}${color1}${if_match ${acpitemp} > 75} ${color ff0000}${endif}${acpitemp}°C
+${color2}HD:     ${alignr}${color1}${fs_used_perc /} % ${fs_bar 6,50}
+${color2}CPU:    ${alignr}${color1}${cpu} % ${cpubar 6,50}
+${color2}RAM:    ${alignr}${color1}${memperc} % ${membar 6,50}
+${color2}Bat:    ${alignr}${color1}${battery_percent BAT0} % ${battery_bar 6,50}
+${color2}Uptime: ${alignr}${color1}${uptime}

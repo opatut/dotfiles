@@ -1,0 +1,18 @@
+[user]
+    name = ...
+    email = ... 
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+
+[mergetool]
+    keepBackup = false
+    promt = false
+
+[merge]
+    tool = meld
+
+[diff]
+    tool = meld

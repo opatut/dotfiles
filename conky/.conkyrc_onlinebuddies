@@ -4,7 +4,7 @@ double_buffer yes
 #own window to run simultanious 2 or more conkys
 own_window yes
 own_window_transparent no
-own_window_type normal
+own_window_type desktop
 own_window_hints undecorate,below,sticky,skip_taskbar,skip_pager 
 
 
@@ -49,5 +49,5 @@ color3 88AAFF
 $online_buddies_file = ""
 
 TEXT
-${color2}Online Buddies [${exec python /home/paul/dotfiles/conky/get_online_buddies.py -c}]: 
-${color1}${exec python /home/paul/dotfiles/conky/get_online_buddies.py}
+${color2}Online Buddies [${exec python2 /home/paul/dotfiles/conky/get_online_buddies.py -c}]: 
+${color1}${exec python2 /home/paul/dotfiles/conky/get_online_buddies.py}

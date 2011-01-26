@@ -3,11 +3,11 @@ double_buffer yes
 
 #own window to run simultanious 2 or more conkys
 own_window yes
-own_window_transparent no
+own_window_transparent yes
+own_window_argb_visual yes
 own_window_type desktop
-own_window_hints undecorate,below,sticky,skip_taskbar,skip_pager 
-
-
+own_window_class conky-semi
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 
 #borders
 draw_borders no
@@ -17,7 +17,7 @@ draw_borders no
 draw_shades no
 
 #position
-gap_x 10
+gap_x 20
 gap_y 40
 alignment bottom_right
 
@@ -36,7 +36,7 @@ use_xft yes
 xftfont DejaVuSans:pixelsize=11
 #to prevent window from moving
 use_spacer no
-#minimum_size 1440 0
+minimum_size 140 0
 
 
 mpd_host localhost

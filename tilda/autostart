@@ -1,0 +1,4 @@
+#!/bin/bash
+tilda &
+sleep 3
+tilda &

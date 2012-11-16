@@ -1,0 +1,100 @@
+# .conkyrc - Edited from various examples across the 'net
+# Used by VastOne on #!
+
+# Create own window instead of using desktop (required in nautilus)
+#own_window yes
+#own_window_type normal
+#own_window_transparent no
+#own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# fiddle with window
+use_spacer right
+
+# Use Xft?
+use_xft yes
+xftfont Tamsyn:size=12
+xftalpha 1
+text_buffer_size 4096
+
+# Update interval in seconds
+update_interval 1
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 336 700
+maximum_width 336
+#maximum_width 1024
+imlib_cache_size 0
+
+# Draw shades?
+draw_shades no
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+background no
+draw_borders no
+own_window_argb_visual yes
+own_window_argb_value 255
+own_window_type desktop
+own_window_hints below,sticky,skip_taskbar,skip_pager
+own_window yes
+own_window_transparent no
+# own_window_class Conky
+
+border_width 0
+
+default_color grey
+
+# Text alignment, other possible values are commented
+#alignment top_middle
+#alignment top_left
+alignment bottom_middle
+#alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 7
+gap_y 24
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer none
+
+TEXT
+
+#MPD $mpd_status
+${if_mpd_playing}
+${color #F6F6F6}$mpd_artist
+${color #F6F6F6}$mpd_album
+${color #F6F6F6}${mpd_title 25}
+${color #F6F6F6}$mpd_elapsed/$mpd_length
+${mpd_bar 9,335}
+${execi 1 python2 albumart.py}${image /tmp/cover.jpg -s 100x100}
+$endif

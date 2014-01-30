@@ -1,0 +1,6 @@
+*.user
+*.pyc
+*.sublime-*
+*.aux
+*.log
+*.dvi

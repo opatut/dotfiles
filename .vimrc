@@ -1,7 +1,11 @@
 " basics
 set nocompatible        " use Vim defaults
 set t_Co=256            " set 256 color
-colorscheme wombat256   " define syntax color scheme
+"let g:solarized_termcolors=256
+"set background=dark
+"let solarized_termtrans=1
+"colorscheme solarized
+colorscheme wombat256
 set mouse=a             " make sure mouse is used in all cases.
 set shortmess+=I        " disable the welcome screen
 set clipboard+=unnamed  " yank and copy to X clipboard
@@ -19,6 +23,7 @@ set mat=5               " show matching brackets for 0.5 seconds
 "set background=dark     " we don't like bright white terminals
 set gfn=Tamsyn\ 10
 set number              " show line numbers
+set relativenumber
 
 " cursor settings
 set cursorline          " highlight cursor line
@@ -46,7 +51,7 @@ nnoremap <silent> <F2> :set list!<CR>
 inoremap <silent> <F2> <esc>:set list!<CR>a
 
 " command mode
-set wildmenu 
+set wildmenu
 set wildmode=list:longest,full
 
 " searching
@@ -106,7 +111,12 @@ nnoremap <silent> <F6> :NERDTreeToggle<CR>
 inoremap <silent> <F6> <esc>:NERDTreeToggle<CR>a
 
 " map : to ; in normal mode
-map ; :
+"map ; :
+
+map ggwp :wq<CR>
+map \p "+p
+map \y "+y
+map \d "+d
 
 " spell check
 map <F12> :w<CR>:!aspell -c %<CR><CR>:e<CR><CR> 

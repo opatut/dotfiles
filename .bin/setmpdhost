@@ -1,0 +1,16 @@
+#!/bin/bash
+[[ $1 = [0-9]* ]] && ip=$1 || ip=$(resolveip $1 -s 2> /dev/null)
+if [ $? == 0 ]; then
+    sudo sed -i 's/^.*_mpd.*$/'$ip' _mpd/g' /etc/hosts
+
+    killall tilda > /dev/null
+    killall conky > /dev/null
+    #kill $(pgrep -f getim.py)
+    sleep 1
+    /home/paul/scripts/autostart & > /dev/null
+
+    echo "Done setting MPD host to "$1
+else
+    echo "Unable to resolve IP for $1."
+    exit 1
+fi

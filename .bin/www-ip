@@ -1,0 +1,8 @@
+#!/bin/bash
+#IP=$(wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g')
+IP=$(curl -s http://curlmyip.com)
+if [[ $IP == "" || $? != 0 ]]; then
+    echo "---"
+else
+    echo $IP
+fi

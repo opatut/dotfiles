@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [[ "$1" == "" ]]; then
+    sudo netctl stop-all
+    sudo systemctl stop netctl-auto@wlp2s0.service
+elif [[ "$1" == "auto" ]]; then
+    sudo netctl stop-all
+    sudo systemctl start netctl-auto@wlp2s0.service
+else
+    sudo systemctl stop netctl-auto@wlp2s0.service
+    sudo netctl stop-all
+    sudo netctl start $1
+fi

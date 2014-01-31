@@ -1,8 +1,0 @@
-#!/bin/bash
-CURRENT=$(setxkbmap -print | grep xkb_symbols | cut -d'+' -f 2)
-
-if [[ "$CURRENT" == "de" ]]; then
-    setxkbmap us
-else
-    setxkbmap de
-fi

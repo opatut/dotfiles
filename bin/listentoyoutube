@@ -1,6 +1,0 @@
-#!/bin/bash
-youtube-dl 'http://youtube.com/watch?v='$1
-F=`ls $1*`
-echo "Found video: "$F
-ffmpeg -i $F -f mp3 $2
-echo "Written to "$2

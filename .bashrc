@@ -1,0 +1,26 @@
+# Check for an interactive session
+[ -z "$PS1" ] && return
+
+. ~/.shell_alias
+
+if [ -n "$SSH_CLIENT" ]; then 
+    export PS1='\[\e[1;33m\][\u@\h \W]\$\[\e[0m\] '
+else
+    export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
+fi
+
+
+complete -cf sudo
+
+. /usr/share/bash-completion/completions/pacman
+complete -F _pacman -o default spacman
+
+. /usr/share/bash-completion/completions/netctl
+complete -F _netctl -o default wifi
+
+. /usr/share/bash-completion/completions/systemctl
+complete -F _systemctl sc
+
+export PATH=/tmp/yaourt-tmp-paul/aur-sencha-cmd/pkg/sencha-cmd/opt/Sencha/Cmd/3.1.2.342:$PATH
+
+export SENCHA_CMD_3_0_0="/tmp/yaourt-tmp-paul/aur-sencha-cmd/pkg/sencha-cmd/opt/Sencha/Cmd/3.1.2.342"

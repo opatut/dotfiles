@@ -1,0 +1,9 @@
+#!/bin/bash
+
+DOTFILES=~/.dotfiles
+
+conky -c $DOTFILES/conky/bar.conkyrc &
+
+tilda &
+sleep 3
+tilda &

@@ -7,7 +7,7 @@ if [ $? == 0 ]; then
     killall conky > /dev/null
     #kill $(pgrep -f getim.py)
     sleep 1
-    /home/paul/scripts/autostart & > /dev/null
+    /home/paul/.dotfiles/autostart & > /dev/null
 
     echo "Done setting MPD host to "$1
 else

@@ -7,8 +7,7 @@ own_window_transparent no
 own_window_argb_visual yes
 own_window_type panel
 own_window_class conky-semi
-#own_window_hints undecorated,above,sticky,skip_taskbar,skip_pager
-own_window_hints sticky
+own_window_hints undecorated,above,sticky,skip_taskbar,skip_pager
 
 #borders
 draw_borders no
@@ -17,51 +16,71 @@ draw_borders no
 draw_shades no
 
 #position
-gap_y 3
-border_inner_margin 3
+gap_y 2
+gap_x 2
+border_inner_margin 2
 alignment top_left
 
 #behaviour
-update_interval 1
-music_player_interval 1
+update_interval 1.0
+music_player_interval 1.0
 
 #colour
 default_color   FFFFFF # Values
-color1          FFAA44 # System (orange)
-color2          4455FF # Network (blue)
-color3          44CC00 # IO (green)
-color4          AAAAAA # Other (gray)
-color5          FFFF88 # Music (Yellow)
+color0          0099FF
+color2          0099FF # active clock
+color3          DDDDDD # inactive clock
 
 own_window_colour 000000
-own_window_argb_value 0
+own_window_argb_value 100
 
 #font
 use_xft yes
-xftfont Tamsyn:pixelsize=11
+#xftfont Abel:bold:pixelsize=12
+xftfont Tamsyn:pixelsize=12
 #to prevent window from moving
-use_spacer none 
-minimum_size 1366 0
-maximum_size 1366 100
+use_spacer none
+minimum_size 1368 0
 
 mpd_host _mpd
 mpd_port 6600
-$mpd_artist = ""
+
+#lua_load /home/paul/scripts/conky/functions.lua
+
+#TEXT
+#${goto 000} ${color A3D}${font FontAwesome:pixelsize=14}${exec echo -e "\uF085"}${font} \
+#${color}${lua_parse format %03.0f $cpu} ${voffset -2}\
+#${goto 060} ${color 072}${font FontAwesome:pixelsize=14}${exec echo -e "\uF0C2"}${font} \
+#${color}${lua_parse format %03.0f $memperc} ${voffset -2}\
+#${goto 120} ${color FF0}${font FontAwesome:pixelsize=14}${exec echo -e "\uF0E7"}${font} \
+#${color}${lua_parse format %03.0f ${battery_percent BAT1}} ${voffset -2}\
+#${goto 175} ${color D60}${font FontAwesome:pixelsize=14}${exec echo -e "\uF0E4"}${font} \
+#${color}${lua_parse format %03.0f ${exec acpi -t | sed 's|.*, \([0-9]*\).*|\1|g' | head -n 1}} ${voffset -2}\
+#${goto 245} ${color D00}${font FontAwesome:pixelsize=14}${exec echo -e "\uF012"}${font} \
+#${color}${execi 60 /home/paul/.bin/wifi-ip} ${voffset -2}\
+#     ${color 17F}${font FontAwesome:pixelsize=14}${exec echo -e "\uF0AC"}${font} \
+#${color}${execi 60 /home/paul/.bin/www-ip} ${voffset -2}\
+##${goto 480} ${color F7A}${font FontAwesome:pixelsize=14}${exec echo -e "\uF075"}${font} ${execp tail -n 1 /home/paul/scripts/conky/pidgin_log.txt} ${voffset -2}\
+## mpd
+#${color 888}$alignr${if_running mpd}\
+#${font FontAwesome:pixelsize=14}${exec echo -e "\uF001"}${font} ${mpd_elapsed}  \
+#${voffset -2}${font FontAwesome:pixelsize=14}${exec echo -e "\uF028"}${font} \
+#${lua_parse format %03.0f $mpd_vol}  \
+#${color}$mpd_smart ($mpd_length)${else}NO MPD$endif   \
+
+#UP ${color D9F}${uptime}$color \
+#DOGE/$$ ${color FA3}${execi 20 /home/paul/scripts/dogecoin/dogecoin.py}$color \
 
 TEXT
-${color1}CPU: ${color}${cpu}% \
-${tab 30}\
-${color1}RAM: ${color}${memperc}% \
-${tab 30}\
-${color2}NET: ${color}${downspeed wlan0} \
-${tab 40}\
-${color3}HDD: ${color}${diskio} \
-${tab 40}\
-${color4}BAT: ${color}${battery_percent BAT1}% (${battery_time BAT1})\
-${tab 20}\
-${color4}UP: ${color}${uptime} \
-${tab 40}\
-${color4}TMP: ${color}${exec acpi -t | sed 's|.*, \([0-9]*\).*|\1|g' | head -n 1} C \
-# mpd
-${color5}$alignr${if_running mpd}\
-${if_match "${mpd_status}"=="Playing"}Playing: ${color}$mpd_smart ${mpd_elapsed} ${mpd_bar 8,60} $mpd_length [${mpd_vol}%] $else Music Paused $endif $endif
+ CPU ${color F93}${cpu}%$color | \
+RAM ${color 3C2}${memperc}%$color | \
+BAT ${color 49F}${battery_percent BAT1}%$color | \
+TEMP ${color FF0}${exec acpi -t | sed 's|.*, \([0-9]*\).*|\1|g' | head -n 1}°C$color | \
+NET ${color 999}${if_up wlp2s0}${wireless_essid wlp2s0} ${addrs wlp2s0}$else${if_up eth0}eth0 $addrs${else}---$endif$endif$color | \
+WWW ${color 999}${execi 60 /home/paul/.bin/www-ip}$color | \
+VOL ${if_match "${exec amixer get Master -M|grep -o '\[off\]'}"=="[off]"}${color D9F}off$color$else${color D9F}${exec amixer get Master -M | grep -oE "[[:digit:]]*%"}$color$endif | \
+$alignr \
+${if_running mpd}\
+#${if_match "${mpd_status}"=="Playing"}${color 909}Playing: ${color}$mpd_smart ${mpd_elapsed} ${mpd_bar 8,60} $mpd_length [${mpd_vol}%] $else Music Paused $endif $endif
+${color A8F}${mpd_status}: ${color}$mpd_smart ${mpd_elapsed} ${mpd_bar 8,60} $mpd_length [${mpd_vol}%]$endif | \
+${time %H:%M} 

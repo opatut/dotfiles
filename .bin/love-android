@@ -1,0 +1,20 @@
+#!/bin/bash
+
+INTENT="org.love2d.android/.GameActivity"
+DEST_PATH="/sdcard/lovegame"
+
+# copy the files
+FILES=$(find . -type f -not -path '*/.git*')
+N=0
+
+for f in $FILES; do
+    echo -en "\r[$N] Copying files... "
+    adb push $f $DEST_PATH/$f 2> /dev/null
+    N=$(($N + 1))
+done
+echo -e "\r[DONE] Copying files"
+
+echo -n "[WAIT] Restarting application... "
+# restart the application
+adb shell am start -S -n $INTENT > /dev/null
+echo -e "\r[DONE] Restarting application"

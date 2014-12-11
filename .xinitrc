@@ -1,0 +1,12 @@
+. ~/.fehbg
+setxkbmap us_de
+xset r rate 200 60
+xrdb ~/.Xresources
+xcompmgr &
+mpd ~/.mpd/mpd.conf
+pidgin &
+exec urxvtd
+
+#sxhkd &
+#exec bspwm
+exec i3

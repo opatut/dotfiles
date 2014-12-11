@@ -1,0 +1,27 @@
+if true; then
+    i3lock \
+        --insidevercolor=000000bf \
+        --insidewrongcolor=ff0000bf \
+        --insidecolor=ffffff00 \
+        --ringvercolor=00000000 \
+        --ringwrongcolor=4040ffff \
+        --ringcolor=00000000 \
+        --textcolor=ffffff00 \
+        --linecolor=00000000 \
+        --keyhlcolor=FFAA66FF \
+        --bshlcolor=ff8000ff \
+        -i /home/paul/media/pictures/wallpapers/mylock.png
+else
+    i3lock \
+        --insidevercolor=000000bf \
+        --insidewrongcolor=ff0000bf \
+        --insidecolor=ffffff33 \
+        --ringvercolor=000000ff \
+        --ringwrongcolor=4040ffff \
+        --ringcolor=000000AA \
+        --textcolor=ffffffff \
+        --linecolor=00000000 \
+        --keyhlcolor=EEAA66FF \
+        --bshlcolor=ff8000ff \
+        -i /home/paul/media/pictures/wallpapers/lock.png
+fi

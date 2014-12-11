@@ -1,27 +1,33 @@
 alias spacman='sudo pacman'
 alias sc='sudo systemctl'
 alias ls='ls --group-directories-first --color=auto'
-alias ll='ls -lv'
-alias la='ls -lva'
-alias grep='grep --color=auto'
+alias ll='ls -lvh'
+alias la='ls -lvha'
 alias svim='sudo vim'
-alias suspend='sc suspend'
-alias clip='xclip -selection clipboard'
-alias ws='ssh -p 244 paul@councilofcode.org'
+alias suspend='echo "Just press the fucking button."'
 alias gls='git status'
 alias tree='tree -C'
 alias pdf='evince'
 alias nyan='cat'
-alias record-desktop='ffmpeg -f x11grab -r 30 -s 1366x768 -i :0.0 -vcodec libx264 -threads 0'
 alias wgetpaste='wgetpaste -C'
 alias pastie='wgetpaste -C'
 alias lg='sudo journalctl -b'
 alias ntfs-mount='sudo mount -t ntfs -o rw,auto,uid=$UID,gid=$GID,fmask=0133,dmask=0022'
+alias share='droopy --dl -m "Let'"'"'s share!"'
+alias mdless='pandoc -s -f markdown -t man !* | groff -T utf8 -man | less'
 
-export PATH="/usr/lib/colorgcc/bin:"$HOME"/.android/sdk/platform-tools:"$HOME"/.android/sdk/tools:"$PATH":"$HOME"/.bin/:."
-export ANDROID_HOME=$HOME"/.android/sdk/"
+alias _='sudo'
+
+alias such='git'
+alias very='git'
+alias much='git'
+alias wow='git status'
+
+export PATH="/usr/lib/colorgcc/bin:"$HOME"/.android/sdk/platform-tools:"$HOME"/.android/sdk/tools:"$PATH":"$HOME"/.gem/ruby/2.1.0/bin:"$HOME"/.bin/:"$(ruby -e 'puts Gem.user_dir')"/bin:."
 export EDITOR=vim
 export WINE_DEBUG=-all
 export BROWSER=chromium
 
 eval `keychain --quiet --eval --agents ssh ~/.ssh/id_rsa`
+
+source $(which virtualenvwrapper.sh)

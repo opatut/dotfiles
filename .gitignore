@@ -4,3 +4,7 @@
 *.aux
 *.log
 *.dvi
+node_modules
+bower_components
+.env
+.DS_Store

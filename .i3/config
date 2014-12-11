@@ -24,8 +24,8 @@ workspace_auto_back_and_forth yes
 
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 #font xft:Tamsyn
-#font xft:DejaVu Sans Mono 8
-font xft:Tamsyn 8
+font xft:DejaVu Sans Bold 8
+#font xft:Tamsyn 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -86,7 +86,7 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 #bindsym $mod+space focus mode_toggle
 #bindsym ctrl+mod1+l exec i3lock -c 000000
-bindsym ctrl+mod1+l exec slimlock
+bindsym ctrl+mod1+l exec .bin/lock
 
 # focus the parent container
 bindsym $mod+u focus parent
@@ -141,6 +141,11 @@ mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
+        bindsym Shift+j resize grow height 100 px or 100 ppt
+        bindsym Shift+k resize shrink height 100 px or 100 ppt
+        bindsym Shift+h resize shrink width 100 px or 100 ppt
+        bindsym Shift+l resize grow width 100 px or 100 ppt
+
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
@@ -154,33 +159,36 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+q exec /home/paul/.bin/forward_ncmpcpp volume +5
-bindsym $mod+a exec /home/paul/.bin/forward_ncmpcpp volume -5
-bindsym $mod+y exec /home/paul/.bin/forward_ncmpcpp toggle
-bindsym $mod+z exec /home/paul/.bin/forward_ncmpcpp toggle
-bindsym $mod+less exec /home/paul/.bin/forward_ncmpcpp prev
-bindsym $mod+x exec /home/paul/.bin/forward_ncmpcpp next
+bindsym $mod+q exec mpc volume +5
+bindsym $mod+a exec mpc volume -5
+bindsym $mod+y exec mpc toggle
+bindsym $mod+z exec mpc toggle
+bindsym $mod+less exec mpc prev
+bindsym $mod+x exec mpc next
 
 bindsym $mod+grave exec /home/paul/.bin/wallpyper next
 bindsym $mod+ctrl+grave exec /home/paul/.bin/wallpyper use next
 bindsym $mod+shift+grave exec /home/paul/.bin/wallpyper random
 
-bindsym Ctrl+Mod1+u exec subl
+bindsym Ctrl+Mod1+u exec subl3
 bindsym Ctrl+Mod1+i exec chromium
 bindsym Ctrl+Mod1+k exec /home/paul/.bin/toggle-xkb
 bindsym Ctrl+Mod1+m exec mumble
 bindsym Ctrl+Mod1+j exec thunderbird
+bindsym Ctrl+Mod1+o exec thunar
+bindsym $mod+v exec pavucontrol
 
 bindsym Ctrl+Mod1+Escape exec xkill
 
-bindsym Print exec sudo scrot /srv/http/scrot.png && imgurbash /srv/http.scrot.png
+#bindsym Print exec scrot /tmp/scrot.png
 
+# TODO: alsa/pulse fix
 set $audiochannel Master
-bindsym XF86AudioRaiseVolume exec amixer -c 0 set $audiochannel 2%+
-bindsym XF86AudioLowerVolume exec amixer -c 0 set $audiochannel 2%-
-bindsym XF86AudioMute        exec amixer -c 0 set $audiochannel togglemute 
-bindsym XF86MonBrightnessUp   exec sudo /home/paul/.bin/bltool +
-bindsym XF86MonBrightnessDown exec sudo /home/paul/.bin/bltool -
+bindsym XF86AudioRaiseVolume exec amixer -D pulse set $audiochannel 2%+
+bindsym XF86AudioLowerVolume exec amixer -D pulse set $audiochannel 2%-
+bindsym XF86AudioMute        exec amixer -D pulse set $audiochannel togglemute
+bindsym XF86MonBrightnessUp   exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -190,15 +198,13 @@ set $workspace_color #FF9900
 
 bar {
     #mode hide
-    position bottom
-    status_command bash -c 'while true; do sleep 100; echo ""; done'
-    #status_command i3status -c ~/.i3/i3status.conf
-    #status_command py3status -c ~/.i3/py3status.conf -i ~/.i3/ -t 0
-    font xft:Tamsyn 10
+    position top
+    status_command python ~/.i3/pyi3status.py
+    font xft:DejaVu Mono Bold 9
 
     colors {
         background #050505
-        statusline #ffffff
+        statusline #EEEEEE
         focused_workspace  $workspace_color  $workspace_color #000000
         active_workspace   #111111 #111111 #3D8CDB
         inactive_workspace #111111 #111111 #aaaaaa
@@ -218,11 +224,13 @@ client.unfocused        #111111 #111111 #aaaaaa #292d2e
 
 for_window [class="Chromium"] border none
 for_window [class="Midori"] border none
-for_window [title="Sublime Text"] border none
+for_window [title="Sublime Text 3"] border none
 for_window [class="Steam"] floating enable
 for_window [title="Steam"] floating enable
 for_window [class="Steam"] border none
 for_window [class="Tilda"] floating enable
+for_window [class="Guake"] floating enable
+for_window [title="Volume Control"] floating enable
 for_window [class="Tilda"] border none
 for_window [title="PlayOnLinux"] floating enable
 for_window [class="love"] floating enable
@@ -239,6 +247,4 @@ bindsym $mod+Shift+s exec xfce4-settings-manager
 assign [class="Pidgin"] 9
 #assign [class="Thunderbird"] 8
 
-exec conky -c /home/paul/scripts/conky/bar.conkyrc &
-exec tilda& 
-exec sleep 3; tilda& 
+#exec conky -c /home/paul/scripts/conky/bar.conkyrc &

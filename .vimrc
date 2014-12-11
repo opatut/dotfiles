@@ -23,7 +23,7 @@ set mat=5               " show matching brackets for 0.5 seconds
 "set background=dark     " we don't like bright white terminals
 set gfn=Tamsyn\ 10
 set number              " show line numbers
-set relativenumber
+"set relativenumber
 
 " cursor settings
 set cursorline          " highlight cursor line
@@ -124,6 +124,9 @@ map <F12> :w<CR>:!aspell -c %<CR><CR>:e<CR><CR>
 " python script run
 map <F9> :w! <CR> :!python %<CR>
 
+map <c-tab> :bn
+map <c-s-tab> :bp
+
 " restore position
 autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -148,3 +151,13 @@ autocmd Filetype tex,latex :set textwidth=99
 " gui
 set guioptions-=m " remove menubar
 set guioptions-=T " remove toolbar
+
+" persistent undo
+set undodir=~/.vim/undo/
+set undofile
+
+execute pathogen#infect()
+
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'

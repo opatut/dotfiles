@@ -1,9 +1,10 @@
 [user]
 	name = Paul Bienkowski
-    email = opatutlol@aol.com
+    email = pb@opatut.de
 
 [core]
     excludesfile = ~/.gitignore
+	pager = less -x4
 
 [color]
     diff = auto
@@ -35,3 +36,6 @@
 
 [push]
 	default = simple
+
+[status]
+    showUntrackedFiles = all

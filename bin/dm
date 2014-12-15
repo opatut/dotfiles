@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Very simple Display Management
+
+# dm a[bove]
+# dm c[lone]
+# dm r[ight]
+# dm l[eft]
+# dm e[xtern]
+# dm i[ntern]
+
+INTERN_NAME=eDP1
+EXTERN_NAME=HDMI1
+
+INTERN_CONF=""
+EXTERN_CONF="--rotate left"
+
+INTERN="--output $INTERN_NAME $INTERN_CONF"
+EXTERN="--output $EXTERN_NAME $EXTERN_CONF"
+
+CMD=$1
+
+if [[ $CMD == a* ]]; then # above
+    xrandr $INTERN --auto $EXTERN --auto --above $INTERN_NAME
+elif [[ $CMD == b* ]]; then # below
+    xrandr $INTERN --auto $EXTERN --auto --below $INTERN_NAME
+elif [[ $CMD == c* || $CMD == s* ]]; then # clone, same-as
+    xrandr $INTERN --auto $EXTERN --auto --same-as $INTERN_NAME
+elif [[ $CMD == r* ]]; then # right
+    xrandr $INTERN --auto $EXTERN --auto --right-of $INTERN_NAME
+elif [[ $CMD == l* ]]; then # left
+    xrandr $INTERN --auto $EXTERN --auto --left-of $INTERN_NAME
+elif [[ $CMD == e* ]]; then # extern
+    xrandr $INTERN --off $EXTERN --auto
+elif [[ $CMD == i* ]]; then # intern
+    xrandr $INTERN --auto $EXTERN --off
+else
+    echo "Usage: dm <mode>"
+    echo ""
+    echo "Available modes:"
+    echo "  above"
+    echo "  below"
+    echo "  clone/same-as"
+    echo "  right"
+    echo "  left"
+    echo "  extern"
+    echo "  intern"
+    exit
+fi
+
+# Fix the wallpaper
+. ~/.fehbg

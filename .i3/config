@@ -95,7 +95,7 @@ bindsym $mod+u focus parent
 bindsym $mod+i focus child
 
 # move current workspace to other screen
-bindsym $mod+space move workspace to output down
+bindsym $mod+space move workspace to output down; move workspace to output left
 
 # switch to workspace
 bindsym $mod+1 workspace 1

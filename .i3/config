@@ -199,7 +199,7 @@ set $workspace_color #FF9900
 bar {
     #mode hide
     position top
-    status_command python ~/.i3/pyi3status.py
+    status_command python ~/.i3/status.py
     font xft:DejaVu Mono Bold 9
 
     colors {

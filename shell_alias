@@ -31,3 +31,16 @@ export BROWSER=chromium
 eval `keychain --quiet --eval --agents ssh ~/.ssh/id_rsa`
 
 source $(which virtualenvwrapper.sh)
+
+makelocal () {
+    if [[ -f Makefile.local ]]; then
+        make -f Makefile.local $@
+    else
+        make $@
+    fi
+}
+
+alias make='makelocal'
+
+unset GREP_OPTIONS
+alias grep='grep --color=auto'

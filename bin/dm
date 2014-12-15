@@ -9,31 +9,34 @@
 # dm e[xtern]
 # dm i[ntern]
 
+# The following variables can be overwritten in ~/.dmrc
 INTERN_NAME=eDP1
-EXTERN_NAME=HDMI1
+EXTERN_NAME=VGA1
+INTERN_CONF=""  # Extra configuration (e.g. rotation) for internal monitor
+EXTERN_CONF=""  # Extra configuration (e.g. rotation) for external monitor
+DEFAULT="right" # Command to run when none specified.
 
-INTERN_CONF=""
-EXTERN_CONF="--rotate left"
+[ -f ~/.dmrc ] && source ~/.dmrc
 
-INTERN="--output $INTERN_NAME $INTERN_CONF"
-EXTERN="--output $EXTERN_NAME $EXTERN_CONF"
+INTERN="--output $INTERN_NAME --auto $INTERN_CONF"
+EXTERN="--output $EXTERN_NAME --auto $EXTERN_CONF"
 
-CMD=$1
+CMD=${1:-$DEFAULT}
 
 if [[ $CMD == a* ]]; then # above
-    xrandr $INTERN --auto $EXTERN --auto --above $INTERN_NAME
+    XRANDR="$INTERN $EXTERN --above $INTERN_NAME"
 elif [[ $CMD == b* ]]; then # below
-    xrandr $INTERN --auto $EXTERN --auto --below $INTERN_NAME
+    XRANDR="$INTERN $EXTERN --below $INTERN_NAME"
 elif [[ $CMD == c* || $CMD == s* ]]; then # clone, same-as
-    xrandr $INTERN --auto $EXTERN --auto --same-as $INTERN_NAME
+    XRANDR="$INTERN $EXTERN --same-as $INTERN_NAME"
 elif [[ $CMD == r* ]]; then # right
-    xrandr $INTERN --auto $EXTERN --auto --right-of $INTERN_NAME
+    XRANDR="$INTERN $EXTERN --right-of $INTERN_NAME"
 elif [[ $CMD == l* ]]; then # left
-    xrandr $INTERN --auto $EXTERN --auto --left-of $INTERN_NAME
+    XRANDR="$INTERN $EXTERN --left-of $INTERN_NAME"
 elif [[ $CMD == e* ]]; then # extern
-    xrandr $INTERN --off $EXTERN --auto
+    XRANDR="$EXTERN --output $INTERN_NAME --off"
 elif [[ $CMD == i* ]]; then # intern
-    xrandr $INTERN --auto $EXTERN --off
+    XRANDR="$INTERN --output $EXTERN_NAME --off"
 else
     echo "Usage: dm <mode>"
     echo ""
@@ -47,6 +50,10 @@ else
     echo "  intern"
     exit
 fi
+
+# Set resolution and options
+echo xrandr $XRANDR
+xrandr $XRANDR
 
 # Fix the wallpaper
 . ~/.fehbg

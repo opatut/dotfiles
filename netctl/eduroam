@@ -13,7 +13,7 @@ WPAConfigSection=(
     'identity="insx054@uni-hamburg.de"'
     'anonymous_identity="anonymous@uni-hamburg.de"'
     'password=""'
-    'ca_cert="/usr/share/ca-certificates/mozilla/Deutsche_Telekom_Root_CA_2.crt"'
+    'ca_cert=""/etc/ssl/certs/ca-certificates.crt"'
     'phase2="auth=PAP"'
 )
 

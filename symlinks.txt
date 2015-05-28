@@ -1,5 +1,4 @@
-i3/config	~/.i3/config
-i3/status.py   	~/.i3/status.py
+i3 ~/.i3
 ssh/config	~/.ssh/config
 xorg/xinitrc	~/.xinitrc
 xorg/Xdefaults	~/.Xdefaults

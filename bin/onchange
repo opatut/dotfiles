@@ -1,0 +1,19 @@
+#! /bin/bash
+DIRECTORY_TO_OBSERVE="$1"
+shift
+CMD="$@"
+
+function block_for_change {
+  inotifywait -qq -r -e modify,move,create,delete $DIRECTORY_TO_OBSERVE
+}
+
+function run {
+    echo "["$(date)"] running: $CMD"
+    sleep 0.1
+    $CMD
+}
+
+run
+while block_for_change; do
+    run &
+done

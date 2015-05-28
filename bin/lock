@@ -1,27 +1,20 @@
-if true; then
-    i3lock \
-        --insidevercolor=000000bf \
-        --insidewrongcolor=ff0000bf \
-        --insidecolor=ffffff00 \
-        --ringvercolor=00000000 \
-        --ringwrongcolor=4040ffff \
-        --ringcolor=00000000 \
-        --textcolor=ffffff00 \
-        --linecolor=00000000 \
-        --keyhlcolor=FFAA66FF \
-        --bshlcolor=ff8000ff \
-        -i /home/paul/media/pictures/wallpapers/mylock.png
-else
-    i3lock \
-        --insidevercolor=000000bf \
-        --insidewrongcolor=ff0000bf \
-        --insidecolor=ffffff33 \
-        --ringvercolor=000000ff \
-        --ringwrongcolor=4040ffff \
-        --ringcolor=000000AA \
-        --textcolor=ffffffff \
-        --linecolor=00000000 \
-        --keyhlcolor=EEAA66FF \
-        --bshlcolor=ff8000ff \
-        -i /home/paul/media/pictures/wallpapers/lock.png
-fi
+#!/bin/bash
+
+scrot /tmp/scrot.png
+
+#convert -scale 5% -scale 2000% /tmp/scrot.png /tmp/blur.png
+convert -blur 0x6 /tmp/scrot.png /tmp/blur.png
+
+i3lock \
+    --insidevercolor=FFFFFF00 \
+    --insidewrongcolor=AA0000FF \
+    --insidecolor=00000044 \
+    --ringvercolor=FFFFFF44 \
+    --ringwrongcolor=AA0000FF \
+    --ringcolor=FFFFFFAA \
+    --textcolor=FFFFFF00 \
+    --linecolor=00000000 \
+    --keyhlcolor=0088FFFF \
+    --bshlcolor=000000FF \
+    -i /tmp/blur.png
+

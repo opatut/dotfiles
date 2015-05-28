@@ -35,7 +35,7 @@ function mkvirtualenv {
 # find out which shell we're using
 SH=$(ps -hp $$ | awk '{print $5}')
 
-if [[ "$SH" == "zsh" ]]; then
+if [[ "$SH" == *zsh ]]; then
     chpwd_functions+=('_auto_virtualenv')
 elif [[ "$SH" == "bash" ]]; then
     PROMPT_COMMAND="_auto_virtualenv;"$PROMPT_COMMAND

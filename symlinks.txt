@@ -1,0 +1,9 @@
+i3/config	~/.i3/config
+i3/status.py   	~/.i3/status.py
+ssh/config	~/.ssh/config
+xorg/xinitrc	~/.xinitrc
+xorg/Xdefaults	~/.Xdefaults
+zsh/zshrc	~/.zshrc
+zsh/zsh_keys	~/.zsh_keys
+zsh/opatut.zsh-theme	~/.oh-my-zsh/themes/opatut.zsh-theme
+xorg/xkb-symbols-us_de	/usr/share/X11/xkb/symbols/us_de

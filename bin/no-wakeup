@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# https://forums.opensuse.org/showthread.php/499032-Don-t-wake-up-on-lid-open
+# Disable wake up on anything, otherwise it sometimes wakes from suspend
+cat /proc/acpi/wakeup | grep '*enabled' | cut -f 1 -d ' ' | xargs -n 1 -I {} sh -c 'echo Disabling wake up on {}... && echo {} > /proc/acpi/wakeup'

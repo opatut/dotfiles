@@ -17,9 +17,12 @@ status.register("temp", format="{temp:.0f}°C")
 # goes below 5 percent while discharging. The block will also color RED.
 status.register("battery", format="{status} {percentage:.2f}% {remaining:%E%hh:%Mm}", alert=True, alert_percentage=5, status=dict(DIS="(-)", CHR="(+)", FULL="(=)"))
 
+status.register("network", interface="enp0s20u1", format_up="{v4cidr}", format_down="")
+status.register("network", interface="enp0s20u2", format_up="{v4cidr}", format_down="")
+
 # Has all the options of the normal network and adds some wireless specific things
 # like quality and network names.
-status.register("wireless", interface="wlp2s0", format_up="{essid} {quality:03.0f}%",)
+status.register("wireless", interface="wlp3s0", format_up="{essid} {quality:03.0f}%",)
 
 # Shows pulseaudio default sink volume
 status.register("pulseaudio", format="♪{volume}",)

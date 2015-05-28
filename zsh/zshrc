@@ -1,0 +1,15 @@
+ZSH=/usr/share/oh-my-zsh/
+
+# ~/.oh-my-zsh/themes/
+ZSH_THEME="opatut"
+DOTFILES=$HOME/.dotfiles/
+
+DISABLE_AUTO_UPDATE="true"
+COMPLETION_WAITING_DOTS="true"
+
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+source $DOTFILES/zsh/aliases.sh
+source $DOTFILES/zsh/auto-virtualenv.sh

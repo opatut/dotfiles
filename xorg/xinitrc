@@ -3,9 +3,12 @@ setxkbmap us_de
 xset r rate 200 60
 xrdb ~/.Xresources
 xcompmgr &
-mpd ~/.mpd/mpd.conf
-pidgin &
-exec urxvtd
+#mpd ~/.mpd/mpd.conf
+#pidgin &
+exec urxvtd&
+
+# Set default display options
+~/.bin/dm
 
 #sxhkd &
 #exec bspwm

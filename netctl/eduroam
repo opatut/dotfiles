@@ -1,5 +1,5 @@
 Connection='wireless'
-Interface='wlan0'
+Interface='YOUR-INTERFACE'
 ESSID='eduroam'
 IP='dhcp'
 Priority=1
@@ -12,7 +12,7 @@ WPAConfigSection=(
     'proto=WPA RSN'
     'identity="insx054@uni-hamburg.de"'
     'anonymous_identity="anonymous@uni-hamburg.de"'
-    'password=""'
+    'password="YOUR-PASSWORD"'
     'ca_cert=""/etc/ssl/certs/ca-certificates.crt"'
     'phase2="auth=PAP"'
 )

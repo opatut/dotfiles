@@ -156,7 +156,7 @@ set guioptions-=T " remove toolbar
 set undodir=~/.vim/undo/
 set undofile
 
-execute pathogen#infect()
+"execute pathogen#infect()
 
 
 let g:ctrlp_map = '<c-p>'

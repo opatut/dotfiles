@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Usage: see ./setup.sh
+
+PROFILE=$1
+NAME=$2
+IFACE=$3
+
+if [ -z "$PROFILE" ]; then
+    echo "Usage:"
+    echo "  ./setup.sh TEMPLATE [PROFILE-NAME [INTERFACE]]"
+    echo ""
+    echo "Description:"
+    echo "  Sets up the profile from the template with the interface and"
+    echo "  password/passphrase replaced, in /etc/netctl/\$PROFILE-NAME"
+    exit 1
+fi
+
+if [ -z "$IFACE" ]; then
+    IFACE=$(ip link show | grep -oE 'wl[a-z0-9]+' | head -n 1)
+    echo "Auto-detected Interface: $IFACE"
+fi
+
+if [ -z "$NAME" ]; then
+    NAME=$(basename "$PROFILE")
+fi
+
+TARGET="/etc/netctl/$NAME"
+
+echo -n "Please enter the password for the profile $TARGET: "
+read -s PASSWORD
+echo ""
+
+sudo cp $PROFILE $TARGET
+sudo sed -i "s/YOUR-INTERFACE/${IFACE}/g" $TARGET
+sudo sed -i "s/YOUR-PASSWORD/${PASSWORD//\//\\\/}/g" $TARGET

@@ -1,7 +1,7 @@
 URxvt.saveLines: 12000
 #URxvt.font: xft:Tamsyn:size=11
 #URxvt.boldFont:xft:Tamsyn:size=11
-URxvt.font: xft:Liberation Mono for Powerline:size=10
+URxvt.font: xft:Input Mono:size=8
 #URxvt.font: xft:DejaVu Sans Mono:size=8
 URxvt.foreground: #CCCCCC
 URxvt.scrollBar: false
@@ -11,7 +11,7 @@ URxvt.termName: xterm-256color
 #URxvt*.transparent: true
 #URxvt*.shading: 20
 urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0000/C000
+urxvt*background: rgba:0000/0000/0000/D800
 
 URxvt*iso14755: false
 URxvt*iso14755_52: false

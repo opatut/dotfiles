@@ -1,0 +1,12 @@
+[user]
+	name = Paul Bienkowski
+    email = pb@opatut.de
+
+[alias]
+	lg = log --graph --exclude refs/stash --all --format=format:'%C(yellow)%h%C(reset) - %C(cyan)%ci%C(reset) %C(green)(%cr)%C(reset) %C(bold yellow)%d%C(reset)%n          %C(white)%s%C(reset) %C(bold white)- %cn / %an%C(reset)%n' --abbrev-commit --date=relative
+
+[core]
+    excludesfile = ~/.gitignore
+
+[push]
+	default = simple

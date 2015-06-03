@@ -3,7 +3,7 @@
 # directory. Adjust $ENVDIR if you want to name it differently.
 # Add $ENVDIR to your global .gitignore etc.
 
-ENVDIR=env
+ENVDIR=.pyenv
 
 # Here be drangons.
 

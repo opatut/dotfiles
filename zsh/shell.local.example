@@ -1,0 +1,7 @@
+# Copy to ~/.shell.local and adjust.
+
+# vi: set ft=sh :
+
+export EMAIL="pb@opatut.de"
+export GIT_COMMITTER_EMAIL=$EMAIL
+export GIT_AUTHOR_EMAIL=$EMAIL

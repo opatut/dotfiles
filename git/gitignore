@@ -1,0 +1,10 @@
+*.sublime-*
+*.local
+~*
+.DS_Store
+.build
+.metadata
+.tags
+*.user
+env/
+.pyenv/

@@ -29,6 +29,9 @@ function _auto_virtualenv () {
 
 function mkvirtualenv {
     virtualenv $@ $ENVDIR
+
+    #trigger directory "change" (chpwd)
+    cd $PWD
 }
 
 

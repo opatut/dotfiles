@@ -1,0 +1,6 @@
+autocenter_mode = yes
+centered_cursor = yes
+user_interface = alternative
+mouse_support = no
+external_editor = vim
+use_console_editor = yes

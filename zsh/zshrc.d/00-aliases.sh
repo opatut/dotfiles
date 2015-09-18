@@ -2,6 +2,7 @@
 
 alias spacman='sudo pacman'
 alias sc='sudo systemctl'
+alias scu='systemctl --user'
 alias ls='ls --group-directories-first -v --color=auto'
 alias ll='ls -lvh'
 alias la='ls -lvha'
@@ -24,9 +25,9 @@ alias jsonformat='python -m json.tool | pygmentize -l json -f terminal256'
 alias clocksync='sudo ntpd -qg && sudo hwclock --systohc'
 alias yaourt='PKGEXT=.tar yaourt'
 alias less='less -S'
-alias gulp='node_modules/.bin/gulp'
 unset GREP_OPTIONS
 alias grep='grep --color=auto'
+alias csv='tabview -w max'
 
 export PATH="/usr/lib/colorgcc/bin:"$HOME"/.android/sdk/platform-tools:"$HOME"/.android/sdk/tools:"$PATH":"$HOME"/.gem/ruby/2.1.0/bin:"$HOME"/.bin/:"$(ruby -e 'puts Gem.user_dir')"/bin:/home/paubie/.cabal-default-sandbox/.cabal-sandbox/bin/:."
 export EDITOR=vim

@@ -29,13 +29,15 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+I exec bash -c "wifi-ip | xargs echo -n | xclip -selection clipboard"
+bindsym $mod+Ctrl+I exec bash -c "www-ip | xargs echo -n | xclip -selection clipboard"
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec i3-dmenu-desktop
-bindsym Mod1+F2 exec i3-dmenu-desktop
+bindsym $mod+slash exec random-wallpaper
 
 # scratchpad handling
 bindsym Mod1+Shift+Tab move scratchpad
@@ -74,7 +76,7 @@ bindsym $mod+Shift+l move right
 bindsym $mod+p split h
 
 # split in vertical orientation
-bindsym $mod+o split v
+#bindsym $mod+o split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -177,7 +179,8 @@ bindsym Ctrl+Mod1+i exec chromium
 bindsym Ctrl+Mod1+k exec /home/paubie/.bin/toggle-xkb
 bindsym Ctrl+Mod1+m exec mumble
 bindsym Ctrl+Mod1+j exec thunderbird
-bindsym Ctrl+Mod1+o exec thunar
+bindsym Ctrl+Mod1+o exec dolphin
+bindsym Ctrl+Mod1+Shift+o exec thunar
 bindsym $mod+v exec pavucontrol
 bindsym XF86LaunchA exec /home/paubie/.bin/toggle-touchpad
 
@@ -204,9 +207,9 @@ set $workspace_color #FF9900
 
 bar {
     #mode hide
-    position top
-    status_command python ~/.i3/status.py
-    font xft:Input Mono 8
+    position bottom
+    status_command bash ~/.i3/status/run.sh
+    font xft:Input Mono 10
 
     colors {
         background #050505

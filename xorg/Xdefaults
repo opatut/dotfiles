@@ -13,6 +13,10 @@ URxvt.termName: xterm-256color
 urxvt*depth: 32
 urxvt*background: rgba:0000/0000/0000/D800
 
+# for working outside...
+#URxvt.foreground: #333333
+#urxvt*background: #FFFFFF
+
 URxvt*iso14755: false
 URxvt*iso14755_52: false
 

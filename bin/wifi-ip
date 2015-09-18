@@ -1,2 +1,2 @@
 #!/bin/bash
-ip addr show wlp3s0 | grep 'inet ' | awk '{print $2}' | sed -e 's/\/.*$//g'
+ip addr show wifi | grep 'inet ' | awk '{print $2}' | sed -e 's/\/.*$//g'

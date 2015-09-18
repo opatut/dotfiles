@@ -2,12 +2,12 @@
 
 if [[ "$1" == "" ]]; then
     sudo netctl stop-all
-    sudo systemctl stop netctl-auto@wlp3s0.service
+    sudo systemctl stop netctl-auto@wifi.service
 elif [[ "$1" == "auto" ]]; then
     sudo netctl stop-all
-    sudo systemctl start netctl-auto@wlp3s0.service
+    sudo systemctl start netctl-auto@wifi.service
 else
-    sudo systemctl stop netctl-auto@wlp3s0.service
+    sudo systemctl stop netctl-auto@wifi.service
     sudo netctl stop-all
     sudo netctl start $1
 fi

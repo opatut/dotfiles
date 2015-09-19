@@ -1,0 +1,4 @@
+#!/bin/bash
+TRACK=$(curl -s http://www.karnhuset.net/demos/spotify/randomSong/SpotifyWebService.asmx/getspotifyrandomsong | grep -oE 'track:[^<]+')
+TRACK=${TRACK:6}
+xdg-open http://open.spotify.com/track/$TRACK

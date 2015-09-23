@@ -30,11 +30,11 @@ status.register("mem", format="💾 {percent_used_mem:.0f}%", warn_percentage=70
 # Shows pulseaudio default sink volume
 status.register("pulseaudio", format="🔊 {volume}",)
 
-status.register("dota2wins", steam_api_key="53AACE69A9E67ADE6560BCBCEB035C42", interval=30*60, steamid="opatut", matches=20, screenname='', format='🎮 {win_percent:.0f}%', good_threshold=55, bad_threshold=45)
+#status.register("dota2wins", steam_api_key="53AACE69A9E67ADE6560BCBCEB035C42", interval=30*60, steamid="opatut", matches=20, screenname='', format='🎮 {win_percent:.0f}%', good_threshold=55, bad_threshold=45)
 
 # Shows mpd status
 # Format:
 # Cloud connected▶Reroute to Remain
-status.register("mpd", format="🎶 {title} - {album} \[{status}\]", status=dict(pause="Paused", play="Playing", stop="Stopped"))
+#status.register("mpd", format="🎶 {title} - {album} \[{status}\]", status=dict(pause="Paused", play="Playing", stop="Stopped"))
 
 status.run()

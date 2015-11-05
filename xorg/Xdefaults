@@ -1,7 +1,7 @@
 URxvt.saveLines: 12000
 #URxvt.font: xft:Tamsyn:size=11
 #URxvt.boldFont:xft:Tamsyn:size=11
-URxvt.font: xft:Input Mono:size=8
+URxvt.font: xft:Input Mono:size=10
 #URxvt.font: xft:DejaVu Sans Mono:size=8
 URxvt.foreground: #CCCCCC
 URxvt.scrollBar: false

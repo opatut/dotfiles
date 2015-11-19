@@ -22,7 +22,7 @@ workspace_auto_back_and_forth yes
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose an xft font, such as:
 
-font xft:Input Mono 8
+font xft:Roboto Bold 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -209,7 +209,7 @@ bar {
     #mode hide
     position bottom
     status_command bash ~/.i3/status/run.sh
-    font xft:Input Mono 10
+    font xft:Roboto Bold 11
 
     colors {
         background #050505

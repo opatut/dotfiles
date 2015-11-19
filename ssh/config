@@ -2,44 +2,9 @@ Host fbi
     User 2bienkow
     HostName rzssh1.informatik.uni-hamburg.de
 
-Host oe
-    User oe
-    HostName rzssh1.informatik.uni-hamburg.de
-
-Host switch
-    User root
-    HostName switch
-    Port 222
-
-Host rzds
-    User 2bienkow
-    HostName rzdspc10.informatik.uni-hamburg.de
-
-Host ilias
-    User tio-admin
-    HostName ilias.ti-online.org
-
-Host tiowa
-    User tio-admin
-    HostName webadmin.ti-online.org
-
-Host olrc
-    User olrc
-    HostName olrc
-
-Host derpy
+Host procyon
     User opatut
-    HostName git.opatut.de
-
-Host sam
-    User opatut
-    HostName muuh.hopto.org
-    Port 5022
-
-Host insekta
-    User root
-    HostName insekta.cinsects.de
-    Port 443
+    HostName opatut.de
 
 Host wr-cluster
     User bienkowski
@@ -57,6 +22,8 @@ Host mafiasi
     User paul
     HostName fs2.informatik.uni-hamburg.de
 
-Host dockvm
-    User paubie
-    HostName srv-docker1.sim.ham1.szops.net.
+Host vly-int
+    HostName 52.17.226.23
+    User jenkins
+    IdentityFile ~/.ssh/veloyo/id_rsa
+

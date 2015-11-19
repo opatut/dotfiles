@@ -29,7 +29,7 @@ unset GREP_OPTIONS
 alias grep='grep --color=auto'
 alias csv='tabview -w max'
 
-export PATH="/usr/lib/colorgcc/bin:"$HOME"/.android/sdk/platform-tools:"$HOME"/.android/sdk/tools:"$PATH":"$HOME"/.gem/ruby/2.1.0/bin:"$HOME"/.bin/:"$(ruby -e 'puts Gem.user_dir')"/bin:/home/paubie/.cabal-default-sandbox/.cabal-sandbox/bin/:."
+export PATH="/usr/lib/colorgcc/bin:$HOME/.android/sdk/platform-tools:$HOME/.android/sdk/tools:$HOME/.gem/ruby/2.1.0/bin:$HOME/.bin/:$(ruby -e 'puts Gem.user_dir')/bin:.:$HOME/.npm-global/bin/:$PATH"
 export EDITOR=vim
 export WINE_DEBUG=-all
 export BROWSER=chromium

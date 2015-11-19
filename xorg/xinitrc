@@ -4,6 +4,8 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 . ~/.fehbg
 setxkbmap us_de
 xset r rate 200 60
+xset s off
+xset -dpms
 xrdb ~/.Xresources
 xcompmgr &
 #mpd ~/.mpd/mpd.conf

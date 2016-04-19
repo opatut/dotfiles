@@ -2,13 +2,43 @@
 	name = Paul Bienkowski
     email = pb@opatut.de
 
-[alias]
-	lg = log --graph --exclude refs/stash --all --format=format:'%C(yellow)%h%C(reset) - %C(cyan)%ci%C(reset) %C(green)(%cr)%C(reset) %C(bold yellow)%d%C(reset)%n          %C(white)%s%C(reset) %C(bold white)- %cn / %an%C(reset)%n' --abbrev-commit --date=relative
-
 [core]
     excludesfile = ~/.gitignore
+	pager = diff-so-fancy | less --tabs=1,5 -R -x4
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+	ui = true
+
+[mergetool]
+    keepBackup = false
+    prompt = false
+
+[merge]
+    tool = meld
+    edit = false
+
+[difftool]
+    prompt = false
+    tool = meld
+
+[alias]
+    mkpatch = format-patch master --stdout
+    lg = log --graph --all --format=format:'%C(yellow)%h%C(reset) - %C(cyan)%ci%C(reset) %C(green)(%cr)%C(reset) %C(bold yellow)%d%C(reset)%n          %C(white)%s%C(reset) %C(bold white)- %cn%C(reset)%n' --abbrev-commit --date=relative
+    lga = ! "git lg $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')"
+     
+    l = log --pretty=oneline --graph --abbrev-commit
+    s = status -s
+    tags = tag -l
+    notags = ! "git tag -d $(git tag -l)"
+    branches = branch -a
+    remotes = remote -v
 
 [push]
 	default = simple
-[tag]
-	sort = version:refname
+
+[status]
+    showUntrackedFiles = all

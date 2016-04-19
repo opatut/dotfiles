@@ -1,17 +1,31 @@
+### Home Directory
+
 bash/bashrc ~/.bashrc
+
 git/gitconfig ~/.gitconfig
 git/gitignore ~/.gitignore
+
 i3 ~/.i3
+
 ncmpcpp/config ~/.ncmpcpp/config
+
 ssh/config ~/.ssh/config
+
 vim ~/.vim
 vim/config/gvimrc.vim ~/.gvimrc
 vim/config/vimrc.vim ~/.vimrc
+
 xorg/Xdefaults ~/.Xdefaults
+xorg/Xresources ~/.Xresources
 xorg/xinitrc ~/.xinitrc
+
 zsh/zsh_keys ~/.zsh_keys
 zsh/zshrc ~/.zshrc
 zsh/zshrc.d/ ~/.zshrc.d
+
+
+### System Directories
+
 xorg/xkb-symbols-us_de /usr/share/X11/xkb/symbols/us_de
 zsh/opatut.zsh-theme /usr/share/oh-my-zsh/themes/opatut.zsh-theme
 

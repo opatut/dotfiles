@@ -4,7 +4,10 @@ import os
 
 with open('symlinks.txt') as f:
     for line in f.readlines():
-        source1, target1 = line.split()
+        line = line.strip() if line else None
+        if not line or line[0] == "#": continue
+
+        source1, target1 = line.strip().split()
 
         source = os.path.abspath(os.path.expandvars(source1))
         target = os.path.abspath(os.path.expandvars(os.path.expanduser(target1)))

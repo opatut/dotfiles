@@ -1,3 +1,4 @@
+bash/bashrc ~/.bashrc
 git/gitconfig ~/.gitconfig
 git/gitignore ~/.gitignore
 i3 ~/.i3

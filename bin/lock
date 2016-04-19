@@ -3,21 +3,21 @@
 #xscreensaver-command -lock
 #exit 0
 
-scrot /tmp/scrot.png
+#scrot /tmp/scrot.png
 
 #convert -scale 5% -scale 2000% /tmp/scrot.png /tmp/blur.png
-convert -blur 0x6 /tmp/scrot.png /tmp/blur.png
+#convert -blur 0x6 /tmp/scrot.png /tmp/blur.png
 
 i3lock \
+    --color 000000 \
     --insidevercolor=FFFFFF00 \
     --insidewrongcolor=AA0000FF \
-    --insidecolor=00000044 \
+    --insidecolor=FFFFFF33 \
     --ringvercolor=FFFFFF44 \
     --ringwrongcolor=AA0000FF \
-    --ringcolor=FFFFFFAA \
+    --ringcolor=FFFFFFFF \
     --textcolor=FFFFFF00 \
     --linecolor=00000000 \
-    --keyhlcolor=0088FFFF \
-    --bshlcolor=000000FF \
-    -i /tmp/blur.png
+    --keyhlcolor=FF6600FF \
+    --bshlcolor=000000FF 
 

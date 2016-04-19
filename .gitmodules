@@ -35,3 +35,9 @@
 [submodule "ctrlp-history"]
 	path = vim/bundle/ctrlp-history
 	url = https://github.com/ompugao/ctrlp-history.git
+[submodule "vim/bundle/tabular"]
+	path = vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "vim/bundle/ctrlp-history"]
+	path = vim/bundle/ctrlp-history
+	url = https://github.com/ompugao/ctrlp-history.git

@@ -1,0 +1,40 @@
+[submodule "ctrlp.vim"]
+	path = vim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "editorconfig-vim"]
+	path = vim/bundle/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule "JavaScript-Indent"]
+	path = vim/bundle/JavaScript-Indent
+	url = https://github.com/vim-scripts/JavaScript-Indent.git
+[submodule "neco-ghc"]
+	path = vim/bundle/neco-ghc
+	url = https://github.com/eagletmt/neco-ghc.git
+[submodule "restart.vim"]
+	path = vim/bundle/restart.vim
+	url = https://github.com/tyru/restart.vim.git
+[submodule "supertab"]
+	path = vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule "syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "tcomment_vim"]
+	path = vim/bundle/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim.git
+[submodule "vim-ags"]
+	path = vim/bundle/vim-ags
+	url = https://github.com/gabesoft/vim-ags.git
+[submodule "vim-javascript-syntax"]
+	path = vim/bundle/vim-javascript-syntax
+	url = https://github.com/jelera/vim-javascript-syntax.git
+[submodule "vim-json"]
+	path = vim/bundle/vim-json
+	url = https://github.com/elzr/vim-json.git
+[submodule "YouCompleteMe"]
+	path = vim/bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+    ignore = dirty
+[submodule "ctrlp-history"]
+	path = vim/bundle/ctrlp-history
+	url = https://github.com/ompugao/ctrlp-history.git

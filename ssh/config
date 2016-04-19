@@ -1,3 +1,7 @@
+Host pi
+    User alarm
+    HostName 10.1.1.108
+
 Host fbi
     User 2bienkow
     HostName rzssh1.informatik.uni-hamburg.de
@@ -5,10 +9,6 @@ Host fbi
 Host procyon
     User opatut
     HostName opatut.de
-
-Host wr-cluster
-    User bienkowski
-    HostName cluster.wr.informatik.uni-hamburg.de
 
 Host gh
     User git
@@ -23,7 +23,30 @@ Host mafiasi
     HostName fs2.informatik.uni-hamburg.de
 
 Host vly-int
-    HostName 52.17.226.23
-    User jenkins
+    HostName vly-int
+    User ec2-user
     IdentityFile ~/.ssh/veloyo/id_rsa
+
+Host vly-sandbox
+    HostName vly-sandbox
+    User ec2-user
+    IdentityFile ~/.ssh/veloyo/id_rsa
+
+Host vly-devops
+    HostName jenkins.veloyo.com
+    User devops
+    IdentityFile ~/.ssh/veloyo/id_rsa
+    ForwardAgent yes
+
+Host vly-prod1
+    HostName vly-prod1
+    User ec2-user
+    IdentityFile ~/.ssh/veloyo/id_rsa
+    ForwardAgent yes
+
+Host vly-prod2
+    HostName vly-prod2
+    User ec2-user
+    IdentityFile ~/.ssh/veloyo/id_rsa
+    ForwardAgent yes
 

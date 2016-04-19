@@ -1,20 +1,50 @@
 #!/bin/bash
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
-. ~/.fehbg
-setxkbmap us_de
-xset r rate 200 60
-xset s off
-xset -dpms
-xrdb ~/.Xresources
-xcompmgr &
-#mpd ~/.mpd/mpd.conf
-pidgin &
-exec urxvtd&
+xsettings() {
+    # Set default display options
+    ~/.bin/dm
+    
+    # Reload wallpaper
+    . ~/.fehbg
 
-# Set default display options
-~/.bin/dm
+    # Set keyboard settings
+    setxkbmap us_de
+    xset r rate 200 60
 
-#sxhkd &
-#exec bspwm
-exec i3
+    # Disable screensaver
+    xset s off
+    xset -dpms
+
+    # Load more X settings
+    xrdb ~/.Xresources
+
+    # Start X compositor
+    xcompmgr &
+}
+
+autostart() {
+    mpd ~/.mpd/mpd.conf &
+    pidgin &
+    dunst &
+    urxvtd &
+    redshift-gtk &
+}
+
+wm() {
+    ### Binary Space Partitioning Window Manager
+    #sxhkd &
+    #exec bspwm
+    
+    ### i3wm
+    exec i3
+
+    ### XMonad
+    #exec xmobar&
+    #exec xmonad
+}
+
+xsettings &
+autostart &
+wm
+

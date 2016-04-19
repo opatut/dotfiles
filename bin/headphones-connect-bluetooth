@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+bluetoothctl <<HEREDOC
+power on
+agent on
+connect 00:19:5D:25:4E:1B 
+HEREDOC
+

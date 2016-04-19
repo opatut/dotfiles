@@ -22,13 +22,14 @@ workspace_auto_back_and_forth yes
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose an xft font, such as:
 
-font xft:Roboto Bold 10
+font xft:Ubuntu Mono Bold 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec roxterm
+bindsym $mod+shift+Return exec gvim --servername vim
 bindsym $mod+Shift+I exec bash -c "wifi-ip | xargs echo -n | xclip -selection clipboard"
 bindsym $mod+Ctrl+I exec bash -c "www-ip | xargs echo -n | xclip -selection clipboard"
 
@@ -171,16 +172,20 @@ bindsym $mod+q exec mpc volume +5
 bindsym $mod+a exec mpc volume -5
 bindsym $mod+y exec mpc toggle
 bindsym $mod+z exec mpc toggle
+bindsym XF86AudioPause exec mpc toggle
 bindsym $mod+less exec mpc prev
 bindsym $mod+x exec mpc next
+
+bindsym $mod+shift+z exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym $mod+shift+less exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+bindsym $mod+shift+x exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 
 bindsym Ctrl+Mod1+u exec subl3
 bindsym Ctrl+Mod1+i exec chromium
 bindsym Ctrl+Mod1+k exec /home/paubie/.bin/toggle-xkb
 bindsym Ctrl+Mod1+m exec mumble
 bindsym Ctrl+Mod1+j exec thunderbird
-bindsym Ctrl+Mod1+o exec dolphin
-bindsym Ctrl+Mod1+Shift+o exec thunar
+bindsym Ctrl+Mod1+o exec thunar
 bindsym $mod+v exec pavucontrol
 bindsym XF86LaunchA exec /home/paubie/.bin/toggle-touchpad
 
@@ -205,21 +210,35 @@ bindsym XF86KbdBrightnessDown exec kbdlight off
 set $window_color #555555
 set $workspace_color #FF9900
 
+# empty bar on external monitors, only show workspace navigator
 bar {
-    #mode hide
-    position bottom
-    status_command bash ~/.i3/status/run.sh
-    font xft:Roboto Bold 11
-
-    colors {
-        background #050505
-        statusline #EEEEEE
-        focused_workspace  $workspace_color  $workspace_color #000000
-        active_workspace   #111111 #111111 #3D8CDB
-        inactive_workspace #111111 #111111 #aaaaaa
-        urgent_workspace   #ffffff #900000
-    }
+    status_command bash -c 'while true; do date "+%a %d. %b | %H:%M:%S"; sleep 1; done'
+    output VGA1
+    output DP1
+    output DP2
+    output HDMI1
+    output HDMI2 
+    tray_output none
+    position top
 }
+
+bar {
+    position top
+    output eDP1
+    separator_symbol " | "
+    status_command bash ~/.i3/status/run.sh
+    font xft:Material-Design-Iconic-Font, Ubuntu Mono Bold 12
+
+#    colors {
+#        background #050505
+#        statusline #EEEEEE
+#        focused_workspace  $workspace_color  $workspace_color #000000
+#        active_workspace   #111111 #111111 #3D8CDB
+#        inactive_workspace #111111 #111111 #aaaaaa
+#        urgent_workspace   #ffffff #900000
+#    }
+}
+
 
 # class                 border  backgr. text    indicator
 client.focused          #1793d0 #243670 #EEEEEE
@@ -231,11 +250,14 @@ client.focused          #443322 #443322 #FFFFFF
 client.focused          $window_color $window_color #FFFFFF
 client.unfocused        #111111 #111111 #aaaaaa #292d2e
 
+for_window [urgent="latest"] focus
+
 for_window [class="^.*"] border pixel 0
 
 for_window [class="Chromium"] border none
 for_window [title="Sublime Text 3"] border none
 for_window [title="Volume Control"] floating enable
 for_window [class="love"] floating enable
+for_window [class="hackedfortress"] floating enable
 
 assign [class="Pidgin"] 9

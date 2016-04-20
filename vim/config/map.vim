@@ -1,7 +1,6 @@
 " Basics
-nnoremap ggwp :update \| :q<CR>
-nnoremap <leader>s :update!<CR>
-nnoremap <leader>w :update! \| :bd<CR>
+nnoremap <silent> <leader>s :update!<CR>
+nnoremap <silent> <leader>w :update! \| :bd<CR>
 nnoremap <leader>f :Ags<space>
 
 " Clipboard (X clipboard on \)
@@ -15,10 +14,37 @@ cnoremap <C-k> <Up>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 
-" Ctrl+D sublime hack
-nnoremap <leader>d *Nciw
-vnoremap <leader>d y/<C-r>"<CR>Ngvc
-nnoremap <leader>n .n
+" <C-D> search and replace, <F2> skip, <F3> replace
+map <leader>d :silent call StartSublDHack()<CR>
+nnoremap <F2> n
+nnoremap <F3> .n
+
+let g:in_subl_d_hack = 0
+
+function! StartSublDHack()
+    let g:in_subl_d_hack = 1
+
+    " visual mode
+    if mode() =~? '.*v'
+        " search for selection, go back, change selection
+        call feedkeys('y/<C-r>"<CR>Ngvc')
+    else 
+        " search word under cursor, go back, start changing it
+        call feedkeys('*Nciw')
+    endif 
+endfunc
+
+au InsertLeave * call OnInsertLeaveSublDHack()
+function! OnInsertLeaveSublDHack()
+    echo "insert leave"
+    if g:in_subl_d_hack == 1 
+        let g:in_subl_d_hack = 0 
+
+        " find next
+        call feedkeys('n')
+    endif
+endfunc
+
 
 " Remove highlights :noh
 nnoremap <leader>h :noh<CR>
@@ -65,3 +91,17 @@ nnoremap <leader>x :only<CR>
 
 " Sort by '/" enclosed string
 vnoremap <S-F9> :sort '[\'"].*[\'"]' r<CR>
+nnoremap <S-F9> vip :sort '[\'"].*[\'"]' r<CR>
+
+" Save files as root with :SW
+function! SudoWrite(...)
+  if a:0 < 1
+    let file = "%"
+  else
+    let file = a:1
+  endif
+  echom file
+  :exec ":w !sudo tee ".file
+endfunction
+command! -nargs=? SW :silent call SudoWrite(<f-args>)
+

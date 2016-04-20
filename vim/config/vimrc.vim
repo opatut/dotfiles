@@ -108,6 +108,7 @@ source ~/.vim/config/map.vim
 """""""""""""""""""""""""
 " file types...
 " au BufRead,BufNewFile *.html5 set filetype=php
+au BufRead,BufNewFile,FileType *.less.module set filetype=less
 
 " ???
 autocmd FileType python let python_highlight_all = 1

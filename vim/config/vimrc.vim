@@ -67,6 +67,9 @@ set incsearch           " increment search
 set ignorecase          " case-insensitive search
 set smartcase           " upper-case sensitive search
 
+hi Search ctermfg=none ctermbg=none cterm=none guifg=NONE guibg=NONE gui=underline
+
+
 " syntax highlighting
 syntax on               " enable syntax highlighting
 
@@ -92,23 +95,31 @@ let g:clang_complete_auto = 1
 "let g:clang_complete_copen = 1
 let g:clang_hl_errors = 1
 
-" Super tab
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-let g:SuperTabDefaultCompletionType = "context"
-
 " minibufexpl
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 
-" nerdtree
+" completion
+" " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
+" (via http://stackoverflow.com/a/22253548/1626737)
+"let g:SuperTabDefaultCompletionType    = '<C-n>'
+"let g:SuperTabCrMapping                = 0
+"let g:UltiSnipsExpandTrigger           = '<tab>'
+"let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+"let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+"let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+
 source ~/.vim/config/map.vim
 
 """""""""""""""""""""""""
 " file types...
 " au BufRead,BufNewFile *.html5 set filetype=php
 au BufRead,BufNewFile,FileType *.less.module set filetype=less
+
+let g:sql_type_default = 'pgsql'
 
 " ???
 autocmd FileType python let python_highlight_all = 1
@@ -178,6 +189,5 @@ set statusline+=%*
 
 " python script run
 " map <F9> :w! <CR> :!python %<CR>
-"
 "
 "

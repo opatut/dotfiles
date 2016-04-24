@@ -14,3 +14,5 @@ set guiheadroom=0
 
 " no welcome screen
 set shortmess+=I
+
+hi Search guifg=NONE guibg=#444 gui=bold

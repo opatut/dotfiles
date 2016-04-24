@@ -59,3 +59,6 @@
 [submodule "vim/bundle/emmet-vim"]
 	path = vim/bundle/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
+[submodule "vim/bundle/pgsql.vim"]
+	path = vim/bundle/pgsql.vim
+	url = https://github.com/exu/pgsql.vim

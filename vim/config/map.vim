@@ -14,6 +14,9 @@ cnoremap <C-k> <Up>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 
+noremap # *
+noremap * #
+
 " <C-D> search and replace, <F2> skip, <F3> replace
 map <leader>d :silent call StartSublDHack()<CR>
 nnoremap <F2> n
@@ -30,13 +33,12 @@ function! StartSublDHack()
         call feedkeys('y/<C-r>"<CR>Ngvc')
     else 
         " search word under cursor, go back, start changing it
-        call feedkeys('*Nciw')
+        call feedkeys('#Nciw')
     endif 
 endfunc
 
 au InsertLeave * call OnInsertLeaveSublDHack()
 function! OnInsertLeaveSublDHack()
-    echo "insert leave"
     if g:in_subl_d_hack == 1 
         let g:in_subl_d_hack = 0 
 
@@ -58,11 +60,12 @@ nmap <leader>c gcc
 vmap <leader>c gc
 
 " Omnicomplete
-inoremap <c-space> <C-X><C-O>
-imap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
-imap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"
-imap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-imap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+"inoremap <c-space> <C-X><C-O>
+"imap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
+"imap <expr> <CR>  pumvisible() ? "\<C-y>\<Esc>" : "\<CR>"
+"imap <expr> <Tab>  pumvisible() ? "\<C-y>\<C-e>" : "\<Tab>"
+"imap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+"imap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " Linting / Errors
 nnoremap <leader>l :SyntasticCheck<CR>

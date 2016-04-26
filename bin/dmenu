@@ -1,0 +1,2 @@
+#/bin/bash
+/usr/bin/dmenu -b -l 10 -i -fn InputMonoBold-12 -p ">> " $@ -nb \#333 -nf \#FF9900 -sb \#555 

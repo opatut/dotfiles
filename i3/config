@@ -37,7 +37,7 @@ bindsym $mod+Ctrl+I exec bash -c "www-ip | xargs echo -n | xclip -selection clip
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec i3-dmenu-desktop
+bindsym $mod+d exec i3-dmenu-desktop --dmenu="/home/paul/.bin/dmenu"
 bindsym $mod+slash exec random-wallpaper
 
 # scratchpad handling
@@ -87,7 +87,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-bindsym $mod+Tab exec quickswitch.py
+bindsym $mod+Tab exec i3finder --dmenu="/home/paul/.bin/dmenu"
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle

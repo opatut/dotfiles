@@ -25,8 +25,9 @@ set number              " show line numbers (alternative: set relativenumber)
 let mapleader = "\<space>"
 
 " gvim only
-set background=dark     " we don't like bright white terminals
-set guifont=Source\ Code\ Pro\ 11
+set background=dark
+set guifont=Input\ Mono\ Light\ 10.5
+set linespace=4
 highlight Normal guibg=black
 
 " cursor settings

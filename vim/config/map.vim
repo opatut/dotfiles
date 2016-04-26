@@ -92,7 +92,9 @@ map <c-h> :bp<CR>
 " Window management
 nnoremap <leader>x :only<CR>
 
-" Sort by '/" enclosed string
+" Sorting rules
+vnoremap <F9> :sort <CR>
+" <S-F9>: by '/" enclosed string
 vnoremap <S-F9> :sort '[\'"].*[\'"]' r<CR>
 nnoremap <S-F9> vip :sort '[\'"].*[\'"]' r<CR>
 

@@ -62,3 +62,27 @@
 [submodule "vim/bundle/pgsql.vim"]
 	path = vim/bundle/pgsql.vim
 	url = https://github.com/exu/pgsql.vim
+[submodule "vim/bundle/vim-abolish"]
+	path = vim/bundle/vim-abolish
+	url = git://github.com/tpope/vim-abolish.git
+[submodule "vim/bundle/es.next.syntax.vim"]
+	path = vim/bundle/es.next.syntax.vim
+	url = https://github.com/othree/es.next.syntax.vim.git
+[submodule "vim/bundle/vim-colors-solarized"]
+	path = vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/bundle/vim-lucius"]
+	path = vim/bundle/vim-lucius
+	url = https://github.com/jonathanfilip/vim-lucius.git
+[submodule "vim/bundle/vim-airline"]
+	path = vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "vim/bundle/vim-airline-themes"]
+	path = vim/bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "vim/bundle/vim-multiple-cursors"]
+	path = vim/bundle/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors
+[submodule "vim/bundle/vim-thematic"]
+	path = vim/bundle/vim-thematic
+	url = https://github.com/reedes/vim-thematic

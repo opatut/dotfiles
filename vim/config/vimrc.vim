@@ -1,11 +1,8 @@
+execute pathogen#infect()
+ 
 " basics
 set nocompatible        " use Vim defaults
-set t_Co=256            " set 256 color
-"let g:solarized_termcolors=256
-"set background=dark
-"let solarized_termtrans=1
-"colorscheme solarized
-colorscheme wombat256i
+
 set mouse=a             " make sure mouse is used in all cases.
 set shortmess+=I        " disable the welcome screen
 set clipboard+=unnamed  " yank and copy to X clipboard
@@ -22,12 +19,18 @@ set matchpairs+=<:>     " match < and > as well
 set mat=5               " show matching brackets for 0.5 seconds
 set number              " show line numbers (alternative: set relativenumber)
 
+" Colors
+set t_Co=256            " set 256 color
+"colorscheme wombat256i
+colorscheme lucius
+LuciusLightHighContrast
+
 let mapleader = "\<space>"
 
 " gvim only
 set background=dark
-set guifont=Input\ Mono\ Light\ 10.5
-set linespace=4
+set guifont=Input\ Mono\ Light\ 10
+"set linespace=4
 highlight Normal guibg=black
 
 " cursor settings
@@ -104,6 +107,8 @@ let g:miniBufExplModSelTarget = 1
 
 " completion
 " " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
+"
+"
 " (via http://stackoverflow.com/a/22253548/1626737)
 "let g:SuperTabDefaultCompletionType    = '<C-n>'
 "let g:SuperTabCrMapping                = 0
@@ -137,10 +142,6 @@ set guioptions-=T " remove toolbar
 set undodir=~/.vim/undo/
 set undofile
 
-
-execute pathogen#infect()
-
-
 """""""""""""""""""""""""
 " CtrlP config
 if executable('ag')
@@ -169,6 +170,10 @@ function! s:setcwd()
 endfunction
 " autocmd BufEnter * call s:setcwd()
 
+"""""""""""""""""""""""""
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = "bubblegum"
 
 """""""""""""""""""""""""
 " Linting (Syntastic)
@@ -191,4 +196,20 @@ set statusline+=%*
 " python script run
 " map <F9> :w! <CR> :!python %<CR>
 "
-"
+
+let g:thematic#defaults = {
+\   'airline-theme': 'bubblegum',
+\   'background': 'dark',
+\   'laststatus': 2,
+\ }
+
+let g:thematic#themes = {
+\   'light'  : { 
+\     'colorscheme': 'lucius', 
+\     'background': 'light',
+\   },
+\   'wombat' :{
+\     'colorscheme': 'wombat256',
+\     'ruler': 1,
+\   },
+\ }

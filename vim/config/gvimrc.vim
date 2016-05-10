@@ -1,4 +1,7 @@
-colorscheme wombat256
+"colorscheme wombat256
+
+colorscheme lucius
+LuciusLightHighContrast
 
 nnoremap <F5> :so ~/.vimrc \| :so ~/.gvimrc <CR>
 

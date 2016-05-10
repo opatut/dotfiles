@@ -14,39 +14,17 @@ cnoremap <C-k> <Up>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 
+" Arrows for window navigation (alt + hjkl)
+nnoremap ê :wincmd j<CR>
+nnoremap ë :wincmd k<CR>
+nnoremap è :wincmd h<CR>
+nnoremap ì :wincmd l<CR>
+
 noremap # *
 noremap * #
 
 " <C-D> search and replace, <F2> skip, <F3> replace
-map <leader>d :silent call StartSublDHack()<CR>
-nnoremap <F2> n
-nnoremap <F3> .n
-
-let g:in_subl_d_hack = 0
-
-function! StartSublDHack()
-    let g:in_subl_d_hack = 1
-
-    " visual mode
-    if mode() =~? '.*v'
-        " search for selection, go back, change selection
-        call feedkeys('y/<C-r>"<CR>Ngvc')
-    else 
-        " search word under cursor, go back, start changing it
-        call feedkeys('#Nciw')
-    endif 
-endfunc
-
-au InsertLeave * call OnInsertLeaveSublDHack()
-function! OnInsertLeaveSublDHack()
-    if g:in_subl_d_hack == 1 
-        let g:in_subl_d_hack = 0 
-
-        " find next
-        call feedkeys('n')
-    endif
-endfunc
-
+map <leader>d :MultipleCursorsFind 
 
 " Remove highlights :noh
 nnoremap <leader>h :noh<CR>
@@ -74,9 +52,9 @@ nnoremap <leader>k :lprevious<CR>
 nnoremap <leader>e :llist<CR>
 
 " CtrlP file switcher
-nnoremap <silent> <C-p> :CtrlP<CR>
 nnoremap <silent> <leader>p :CtrlP<CR>
 nnoremap <silent> <leader>P :CtrlPCurFile<CR>
+nnoremap <silent> <C-p>     :CtrlPCurFile<CR>
 nnoremap <silent> <leader>o :CtrlPMRUFiles<CR>
 
 nnoremap <leader>; :CtrlPCmdHistory<CR>
@@ -110,3 +88,5 @@ function! SudoWrite(...)
 endfunction
 command! -nargs=? SW :silent call SudoWrite(<f-args>)
 
+
+nnoremap <leader>t :ThematicNext<CR>

@@ -11,12 +11,17 @@
 
 # The following variables can be overwritten in ~/.dmrc
 INTERN_NAME=eDP1
-EXTERN_NAME=VGA1
+EXTERN_NAME=auto
 INTERN_CONF=""  # Extra configuration (e.g. rotation) for internal monitor
 EXTERN_CONF=""  # Extra configuration (e.g. rotation) for external monitor
 DEFAULT="right" # Command to run when none specified.
 
 [ -f ~/.dmrc ] && source ~/.dmrc
+
+if [[ "${EXTERN_NAME}" == "auto" ]]; then
+    EXTERN_NAME=$(xrandr | grep ' connected' | awk '{print $1}' | grep -v "${INTERN_NAME}")
+    echo "auto-detected extern display: ${EXTERN_NAME}"
+fi
 
 INTERN="--output $INTERN_NAME --auto $INTERN_CONF"
 EXTERN="--output $EXTERN_NAME --auto $EXTERN_CONF"

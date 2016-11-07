@@ -1,7 +1,7 @@
 "colorscheme wombat256
 
-colorscheme lucius
-LuciusLightHighContrast
+"colorscheme lucius
+"LuciusLightHighContrast
 
 nnoremap <F5> :so ~/.vimrc \| :so ~/.gvimrc <CR>
 
@@ -18,4 +18,4 @@ set guiheadroom=0
 " no welcome screen
 set shortmess+=I
 
-hi Search guifg=NONE guibg=#444 gui=bold
+hi Search guifg=NONE guibg=#444444 gui=bold

@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+import subprocess, sys, re
+
+sink_inputs = str(subprocess.check_output("pactl list sink-inputs", shell=True))
+
+app = sys.argv[1]
+args = sys.argv[2:]
+
+for s in sink_inputs.split('\n\n'):
+    if app in s:
+        client = re.search('Sink Input #(\d+)', s)
+        clientNumber = int(client.group(1))
+        subprocess.check_output("pactl set-sink-input-volume {} {}".format(clientNumber, " ".join(args)), shell=True)
+        sys.exit(0)
+
+print("Application {} not found in pulseaudio.".format(app))
+sys.exit(0)

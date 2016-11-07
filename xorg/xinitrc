@@ -18,17 +18,15 @@ xsettings() {
 
     # Load more X settings
     xrdb ~/.Xresources
-
-    # Start X compositor
-    xcompmgr &
 }
 
 autostart() {
-    mpd ~/.mpd/mpd.conf &
-    pidgin &
+    #mpd ~/.mpd/mpd.conf &
+    # pidgin &
     dunst &
     urxvtd &
     redshift-gtk &
+    xcompmgr &
 }
 
 wm() {

@@ -1,30 +1,32 @@
 URxvt.saveLines: 12000
-#URxvt.font: xft:Tamsyn:size=12
-#URxvt.boldFont:xft:Tamsyn:size=11
-#URxvt.font: xft:Roboto:size=11
-URxvt.font: xft:Cousine:size=12
+!!URxvt.font: xft:Tamsyn:size=12
+!!URxvt.boldFont:xft:Tamsyn:size=11
+!!URxvt.font: xft:Roboto:size=11
+!!URxvt.font: xft:Cousine:size=12
+URxvt.font: xft:Input Mono:size=12
+!!URxvt.font: xft:Fira Code:size=12
 URxvt.foreground: #CCCCCC
 URxvt.scrollBar: false
 URxvt.termName: xterm-256color
 
-#URxvt.background: Black
-#URxvt*.transparent: true
-#URxvt*.shading: 20
+!!URxvt.background: Black
+!!URxvt*.transparent: true
+!!URxvt*.shading: 20
 urxvt*depth: 32
 urxvt*background: rgba:0000/0000/0000/D800
 
-# for working outside...
-#URxvt.foreground: #333333
-#urxvt*background: #FFFFFF
+!! for working outside...
+!!URxvt.foreground: #333333
+!!urxvt*background: #FFFFFF
 
 URxvt*iso14755: false
 URxvt*iso14755_52: false
 
-### Plugins (perl)
+!!## Plugins (perl)
 
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,font-size,matcher
 
-# url-select
+!! url-select
 URxvt.url-select.launcher:  chromium
 URxvt.url-select.underline: true
 URxvt.url-launcher: xdg-open
@@ -32,29 +34,29 @@ URxvt.underlineURLs: True
 URxvt.matcher.button: 1
 URxvt.keysym.M-u:           perl:url-select:select_next
 
-# keyboard-select
+!! keyboard-select
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
 
-# clipboard
+!! clipboard
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.copyCommand: xclip -selection clipboard
 URxvt.pasteCommand: xclip -selection clipboard -o
 
-# font-size
+!! font-size
 URxvt.keysym.Control-Up: perl:font-size:incglobal
 URxvt.keysym.Control-Down: perl:font-size:decglobal
 
 
-### Keycodes
+!!## Keycodes
 
 URxvt.altSendsEscape: true
-# Up/Down
+!! Up/Down
 URXVT.keysym.C-K: command:\033]720;1\007
 URxvt.keysym.C-J: command:\033]721;1\007
-# URxvt.keysym.Control-Up:   \033[1;5A
-# URxvt.keysym.Control-Down:    \033[1;5B
-# URxvt.keysym.Control-Left:    \033[1;5D
-# URxvt.keysym.Control-Right:    \033[1;5C
+!! URxvt.keysym.Control-Up:   \033[1;5A
+!! URxvt.keysym.Control-Down:    \033[1;5B
+!! URxvt.keysym.Control-Left:    \033[1;5D
+!! URxvt.keysym.Control-Right:    \033[1;5C
 

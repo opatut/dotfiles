@@ -1,0 +1,54 @@
+#!/bin/bash
+COMMAND=$1
+PLAYER=$(cat $HOME/.mcp-current)
+PLAYER=${PLAYER:-mpd}
+
+case "$PLAYER" in
+mpd)
+    case "$COMMAND" in
+    volume-up) 
+        mpc volume +5
+        ;;
+    volume-down) 
+        mpc volume -5
+        ;;
+    toggle) 
+        mpc toggle
+        ;;
+    prev) 
+        mpc prev
+        ;;
+    next) 
+        mpc next
+        ;;
+    *)
+        echo "Unsupported command $COMMAND on player $PLAYER"
+        exit 1
+    esac
+    ;;
+spotify|playerctl)
+    case "$COMMAND" in
+    volume-up) 
+        pa-program-volume Spotify +5%
+        ;;
+    volume-down) 
+        pa-program-volume Spotify -5%
+        ;;
+    toggle) 
+        playerctl play-pause
+        ;;
+    prev) 
+        playerctl previous
+        ;;
+    next) 
+        playerctl next
+        ;;
+    *)
+        echo "Unsupported command $COMMAND on player $PLAYER"
+        exit 1
+    esac
+    ;;
+*)
+    echo "Unsupported player $PLAYER"
+    exit 1
+esac

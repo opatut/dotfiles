@@ -5,6 +5,9 @@
 [core]
     excludesfile = ~/.gitignore
 	pager = diff-so-fancy | less --tabs=1,5 -R -x4
+    # editor = gvim --role floating -geometry 100x24 -f -n 
+    editor = nvim
+    # -c 'startinsert'
 
 [color]
     diff = auto
@@ -13,29 +16,24 @@
     interactive = auto
 	ui = true
 
-[mergetool]
-    keepBackup = false
-    prompt = false
-
 [merge]
-    tool = meld
-    edit = false
+    tool = vimdiff
 
-[difftool]
+[mergetool]
     prompt = false
-    tool = meld
 
 [alias]
     branches = branch -a
     ff = !sh -c 'branch=$(git symbolic-ref HEAD | cut -d '/' -f 3) && git merge --ff-only origin/$branch' -
     l = log --pretty=oneline --graph --abbrev-commit
-    lg = log --graph --all --format=format:'%C(yellow)%h%C(reset) - %C(cyan)%ci%C(reset) %C(green)(%cr)%C(reset) %C(bold yellow)%d%C(reset)%n          %C(white)%s%C(reset) %C(bold white)- %cn%C(reset)%n' --abbrev-commit --date=relative
+    lg = log --graph --all --format=format:'%C(yellow)%h%C(reset) - %C(cyan)%ci%C(reset) %C(green)(%cr)%C(reset) %C(bold yellow)%d%C(reset)%n          %C(reset)%s%C(reset) %C(dim normal)- %cn%C(reset)%n' --abbrev-commit --date=relative
     lga = ! "git lg $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')"
     mkpatch = format-patch master --stdout
     notags = ! "git tag -d $(git tag -l)"
     remotes = remote -v
     s = status -s
     tags = tag -l
+    wip = commit -m wip --no-verify
 
 [push]
 	default = simple

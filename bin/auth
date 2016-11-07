@@ -1,0 +1,16 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+    echo "Usage: auth <key name>"
+    exit 1
+fi
+
+KEYFILE=~/.authenticator/$1
+if [ ! -f "$KEYFILE" ]; then
+    echo "Keyfile not found at $KEYFILE."
+    exit 1
+fi
+
+KEY=$(cat $KEYFILE)
+TOKEN=$(authenticator --key $KEY | grep 'Token' | awk '{print $2}')
+echo $TOKEN
+echo $TOKEN | xclip -selection clipboard

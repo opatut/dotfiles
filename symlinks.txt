@@ -4,6 +4,8 @@ git/gitignore            ~/.gitignore
 i3                       ~/.i3
 ncmpcpp/config           ~/.ncmpcpp/config
 ssh/config               ~/.ssh/config
+spacemacs/spacemacs      ~/.spacemacs
+spacemacs/spacemacs_layers ~/.spacemacs_layers
 vim                      ~/.vim
 vim/config/gvimrc.vim    ~/.gvimrc
 vim/config/vimrc.vim     ~/.vimrc

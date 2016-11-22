@@ -38,7 +38,7 @@ status.register("mem", format="{percent_used_mem:.0f}% MEM", warn_percentage=70,
 # Cloud connected▶Reroute to Remain
 # status.register("mpd", format="({status}) {artist} - {title} ({album}) ", status=dict(pause="", play="", stop=""))
 
-status.register(Toggl, apikey=os.environ["TOGGL_API_KEY"])
+#status.register(Toggl, apikey=os.environ["TOGGL_API_KEY"])
 # status.register(Countdown, goal=datetime(2016, 9, 15, 10, 0, 0), text="Welpe")
 
 status.run()

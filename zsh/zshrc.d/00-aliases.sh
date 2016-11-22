@@ -58,3 +58,4 @@ export NODE_REPL_HISTORY_FILE="$HOME/.nodehistory"
 export NODE_PATH="$HOME/.npm-global/lib/node_modules"
 export ANDROID_HOME=/opt/android-sdk
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
+export DEV_TOOL=eval

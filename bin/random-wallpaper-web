@@ -1,0 +1,11 @@
+#!/bin/bash
+
+PAGE=$(($RANDOM % 119))
+SEED=$(uuidgen)
+TYPE=${1:-landscape}
+
+META_URL="https://www.pexels.com/search/${TYPE}.js?page=${PAGE}&seed=${SEED}"
+IMAGE_URL=$(curl $META_URL 2> /dev/null | grep -oE 'https://images.pexels.com/photos/[^"]+\.jpe?g' | sort | uniq | shuf -n 1 | sed 's/-medium//')
+wget -q "$IMAGE_URL" -O /tmp/wallpaper.jpg 
+echo "$IMAGE_URL" >> ~/.random-wallpapers
+feh --bg-scale /tmp/wallpaper.jpg

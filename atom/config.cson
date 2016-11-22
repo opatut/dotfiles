@@ -1,0 +1,82 @@
+"*":
+  "advanced-open-file":
+    fuzzyMatch: true
+  "autocomplete-plus":
+    useCoreMovementCommands: false
+  core:
+    audioBeep: false
+    autoHideMenuBar: true
+    automaticallyUpdate: false
+    customFileTypes:
+      "source.css.less": [
+        "less.module"
+        "css.js"
+      ]
+    destroyEmptyPanes: false
+    disabledPackages: [
+      "spell-check"
+      "pull-requests"
+    ]
+    ignoredNames: [
+      "node_modules"
+      "*.sublime-*"
+      "*.pyenv"
+      "*.pyc"
+      "*.aux"
+      "*.log"
+      "*.dvi"
+    ]
+    projectHome: "/home/paul/src"
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "base16-tomorrow-dark-theme"
+    ]
+  editor:
+    fontFamily: "Input Mono"
+    invisibles: {}
+    preferredLineLength: 120
+    showIndentGuide: true
+    softWrapAtPreferredLineLength: true
+    tabLength: 4
+  "exception-reporting":
+    userId: "eec108a5-4c17-3820-3957-ea9d80797e43"
+  linter:
+    errorPanelHeight: 108
+    inlineTooltipInterval: 500
+    showErrorInline: false
+    showErrorTabLine: true
+  metrics:
+    userId: "5d291260a898af305bb20e5a2c3bbdb723a7676f"
+  "pull-requests":
+    githubAuthorizationToken: "171597a570cdaae505e74ec994ba7465c7cd6776"
+  "tidy-markdown":
+    ensureFirstHeaderIsH1: false
+    runOnSave: false
+  "tree-view":
+    hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
+  "vim-mode":
+    useSmartcaseForSearch: true
+  "vim-mode-plus":
+    flashOnOperate: false
+    flashOnUndoRedo: false
+    stayOnDelete: true
+    stayOnTransformString: true
+    stayOnYank: true
+    useClipboardAsDefaultRegister: true
+    useSmartcaseForSearch: true
+  welcome:
+    showOnStartup: false
+".js.regexp.replacement.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
+".js.regexp.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
+".js.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4

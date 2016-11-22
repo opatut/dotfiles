@@ -1,0 +1,67 @@
+'atom-text-editor.vim-mode-plus:not(.insert-mode)':
+    'ctrl-f': 'unset!'
+    'g r': 'vim-mode-plus:replace-with-register'
+    'alt-r': 'tree-view:reveal-active-file'
+    'ctrl-shift-w': 'tabs:close-all-tabs'
+
+
+'.platform-linux atom-text-editor':
+    'alt-h': 'window:focus-pane-on-left'
+    'alt-j': 'window:focus-pane-below'
+    'alt-k': 'window:focus-pane-above'
+    'alt-l': 'window:focus-pane-on-right'
+    'alt-shift-h': 'window:move-active-item-to-pane-on-left'
+    'alt-shift-j': 'window:move-active-item-to-pane-below'
+    'alt-shift-k': 'window:move-active-item-to-pane-above'
+    'alt-shift-l': 'window:move-active-item-to-pane-on-right'
+    'ctrl-d': 'find-and-replace:select-next'
+    'ctrl-w': 'tabs:close-tab'
+    'ctrl-w c': 'unset!'
+    'ctrl-w c': 'unset!'
+    'ctrl-w h': 'unset!'
+    'ctrl-w j': 'unset!'
+    'ctrl-w k': 'unset!'
+    'ctrl-w l': 'unset!'
+    'ctrl-w p': 'unset!'
+    'ctrl-w q': 'unset!'
+    'ctrl-w s': 'unset!'
+    'ctrl-w v': 'unset!'
+    'ctrl-w w': 'unset!'
+    'ctrl-w z': 'unset!'
+    'ctrl-w ctrl-c': 'unset!'
+    'ctrl-w ctrl-h': 'unset!'
+    'ctrl-w ctrl-j': 'unset!'
+    'ctrl-w ctrl-k': 'unset!'
+    'ctrl-w ctrl-l': 'unset!'
+    'ctrl-w ctrl-p': 'unset!'
+    'ctrl-w ctrl-q': 'unset!'
+    'ctrl-w ctrl-s': 'unset!'
+    'ctrl-w ctrl-v': 'unset!'
+    'ctrl-w ctrl-w': 'unset!'
+    'ctrl-w down': 'unset!'
+    'ctrl-w up': 'unset!'
+    'ctrl-w left': 'unset!'
+    'ctrl-w right': 'unset!'
+
+'.platform-linux atom-text-editor.visual-mode':
+    'ctrl-d': 'find-and-replace:select-next'
+
+'.platform-linux atom-text-editor.vim-mode-plus:not(.insert-mode)':
+    'ctrl-d': 'find-and-replace:select-next'
+
+'.platform-linux .modal atom-text-editor[mini]':
+    'ctrl-j': 'core:move-down'
+    'ctrl-k': 'core:move-up'
+
+'.platform-linux atom-workspace':
+    'ctrl-o': 'advanced-open-file:toggle'
+
+'.advanced-open-file atom-text-editor':
+    'ctrl-j': 'advanced-open-file:move-cursor-down'
+    'ctrl-k': 'advanced-open-file:move-cursor-up'
+
+'body atom-text-editor.autocomplete-active':
+    'ctrl-k': 'autocomplete-plus:move-up'
+    'ctrl-j': 'autocomplete-plus:move-down'
+    'ctrl-shift-k': 'autocomplete-plus:move-to-top'
+    'ctrl-shift-j': 'autocomplete-plus:move-to-bottom'

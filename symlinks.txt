@@ -1,3 +1,5 @@
+atom/config.cson         ~/.atom/config.cson
+atom/keymap.cson         ~/.atom/keymap.cson
 bash/bashrc              ~/.bashrc
 git/gitconfig            ~/.gitconfig
 git/gitignore            ~/.gitignore

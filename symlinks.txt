@@ -15,6 +15,7 @@ xorg/xinitrc             ~/.xinitrc
 zsh/zsh_keys             ~/.zsh_keys
 zsh/zshrc                ~/.zshrc
 zsh/zshrc.d/             ~/.zshrc.d
+bin                      ~/.bin
 
 xorg/xkb-symbols-us_de   /usr/share/X11/xkb/symbols/us_de
 zsh/opatut.zsh-theme     /usr/share/oh-my-zsh/themes/opatut.zsh-theme

@@ -1,4 +1,5 @@
 *.user
+*.o
 *.pyc
 *.sublime-*
 *.aux
@@ -11,3 +12,10 @@ bower_components
 .pyenv
 .projections.json
 .#*
+.tern-project
+*/seeds/locals*
+*.pdfpc
+build
+yarn.lock
+_minted-index
+*~

@@ -5,8 +5,8 @@
 [core]
     excludesfile = ~/.gitignore
 	pager = diff-so-fancy | less --tabs=1,5 -R -x4
-    # editor = gvim --role floating -geometry 100x24 -f -n 
-    editor = nvim
+    editor = gvim --role floating -geometry 100x24 -f -n 
+    # editor = vim
     # -c 'startinsert'
 
 [color]
@@ -26,7 +26,7 @@
     branches = branch -a
     ff = !sh -c 'branch=$(git symbolic-ref HEAD | cut -d '/' -f 3) && git merge --ff-only origin/$branch' -
     l = log --pretty=oneline --graph --abbrev-commit
-    lg = log --graph --all --format=format:'%C(yellow)%h%C(reset) - %C(cyan)%ci%C(reset) %C(green)(%cr)%C(reset) %C(bold yellow)%d%C(reset)%n          %C(reset)%s%C(reset) %C(dim normal)- %cn%C(reset)%n' --abbrev-commit --date=relative
+    lg = ! "git log --graph --all --format=format:'%C(yellow)%h%C(reset) - %C(cyan)%ci%C(reset) %C(green)(%cr)%C(reset) %C(bold yellow)%d%C(reset)%n          %C(reset)%s%C(reset) %C(dim normal)- %cn%C(reset)%n' --abbrev-commit --date=relative --color=always $@ | sed 's/origin\\/pull\\//#/g' | sed 's/upstream\\//🚀 /g' | sed 's/origin\\//↑:/g' | less"
     lga = ! "git lg $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')"
     mkpatch = format-patch master --stdout
     notags = ! "git tag -d $(git tag -l)"
@@ -34,9 +34,25 @@
     s = status -s
     tags = tag -l
     wip = commit -m wip --no-verify
+    wdiff = diff --ignore-all-space --color-words --word-diff-regex '[[:alnum:]_]+|[^[:alnum:]_[:space:]]+'
 
 [push]
-	default = simple
+	default = current
 
 [status]
     showUntrackedFiles = all
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[diff]
+    renameLimit = 2000
+    wordRegex = 
+
+[pull]
+	rebase = true
+[credential]
+	helper = !pass-git-helper $@
+	useHttpPath = true

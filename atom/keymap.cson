@@ -3,9 +3,13 @@
     'g r': 'vim-mode-plus:replace-with-register'
     'alt-r': 'tree-view:reveal-active-file'
     'ctrl-shift-w': 'tabs:close-all-tabs'
+    'ctrl-shift-r': 'tree-view:rename'
+    'ctrl-n': 'tree-view:add-file'
+    'g q': 'autoflow:reflow-selection'
 
 
 '.platform-linux atom-text-editor':
+    'ctrl-b': 'build-tools:first-command'
     'alt-h': 'window:focus-pane-on-left'
     'alt-j': 'window:focus-pane-below'
     'alt-k': 'window:focus-pane-above'
@@ -21,6 +25,7 @@
     'ctrl-w h': 'unset!'
     'ctrl-w j': 'unset!'
     'ctrl-w k': 'unset!'
+    'ctrl-w =': 'unset!'
     'ctrl-w l': 'unset!'
     'ctrl-w p': 'unset!'
     'ctrl-w q': 'unset!'

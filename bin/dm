@@ -18,15 +18,26 @@ DEFAULT="right" # Command to run when none specified.
 
 [ -f ~/.dmrc ] && source ~/.dmrc
 
+CMD=${1:-$DEFAULT}
+
+BROKEN=$(xrandr | grep -E 'disconnected [^(]' | awk '{print $1}')
+for broken in $BROKEN; do
+    echo "> display ${broken} disconnected but enabled - disabling"
+    echo xrandr --output ${broken} --off
+    xrandr --output ${broken} --off
+done
+
 if [[ "${EXTERN_NAME}" == "auto" ]]; then
     EXTERN_NAME=$(xrandr | grep ' connected' | awk '{print $1}' | grep -v "${INTERN_NAME}")
-    echo "auto-detected extern display: ${EXTERN_NAME}"
+    if [ -z "${EXTERN_NAME}" ]; then
+        echo '> no external display found'
+    else
+        echo "> auto-detected extern display: ${EXTERN_NAME}"
+    fi
 fi
 
 INTERN="--output $INTERN_NAME --auto $INTERN_CONF"
-EXTERN="--output $EXTERN_NAME --auto $EXTERN_CONF"
-
-CMD=${1:-$DEFAULT}
+EXTERN=$(test -z "$EXTERN_NAME" && echo "" || echo "--output $EXTERN_NAME --auto $EXTERN_CONF")
 
 if [[ $CMD == a* ]]; then # above
     XRANDR="$INTERN $EXTERN --above $INTERN_NAME"
@@ -38,10 +49,12 @@ elif [[ $CMD == r* ]]; then # right
     XRANDR="$INTERN $EXTERN --right-of $INTERN_NAME"
 elif [[ $CMD == l* ]]; then # left
     XRANDR="$INTERN $EXTERN --left-of $INTERN_NAME"
-elif [[ $CMD == e* ]]; then # extern
+elif [[ $CMD == e* && -n "$INTERN_NAME" && -n "$EXTERN_NAME" ]]; then # extern
     XRANDR="$EXTERN --output $INTERN_NAME --off"
-elif [[ $CMD == i* ]]; then # intern
+elif [[ $CMD == i* && -n "$INTERN_NAME" && -n "$EXTERN_NAME" ]]; then # intern
     XRANDR="$INTERN --output $EXTERN_NAME --off"
+elif [[ $CMD == i* && -n "$INTERN_NAME" ]]; then # intern
+    XRANDR="$INTERN"
 else
     echo "Usage: dm <mode>"
     echo ""
@@ -62,3 +75,4 @@ xrandr $XRANDR
 
 # Fix the wallpaper
 . ~/.fehbg
+~/.bin/polybars

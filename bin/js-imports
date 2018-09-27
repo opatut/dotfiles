@@ -1,0 +1,7 @@
+
+ #!/bin/bash
+
+ ag "(from |require\()'[^\.](.*)'" -o --no-heading --nofilename \
+    | sed -E "s#(from |require\()'((@[^/]+/)?[^/]+).*'#\2#g" \
+    | sort \
+    | uniq 

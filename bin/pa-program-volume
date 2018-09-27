@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import subprocess, sys, re
 
-sink_inputs = str(subprocess.check_output("pactl list sink-inputs", shell=True))
+sink_inputs = subprocess.check_output("pactl list sink-inputs", shell=True).decode('utf-8')
 
 app = sys.argv[1]
 args = sys.argv[2:]

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# https://unix.stackexchange.com/questions/188164/override-a-few-keycodes-with-xkb
+
+setxkbmap -print | sed -Ee '/xkb_keycodes/s/(\+opatut)?"[[:space:]]/+opatut&/' | xkbcomp -I${HOME}/.xkb - ~/compiled-keymap

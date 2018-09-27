@@ -1,0 +1,113 @@
+#!/usr/bin/env python3
+
+import requests, os, json, yaml, argparse, subprocess, sys
+from colorama import init, Fore, Style
+from slack import set_slack_status
+
+init()
+
+STORAGE = os.path.expanduser("~/.slack-status")
+
+def cmd_set_raw(args):
+    set_slack_status(args.emoji, args.text)
+
+def cmd_get(args):
+    try: 
+        r = fetch('users.profile.get')
+
+        emoji = r['profile']['status_emoji']
+        text = r['profile']['status_text']
+
+        if args.format == 'json':
+            print(json.dumps(dict(emoji=emoji, text=text), indent=2))
+        elif args.format == 'pretty':
+            format_item(emoji, text)
+        elif args.format == 'simple':
+            print(text)
+        else:
+            raise Exception("Unknown format: " + args.format)
+    except:
+        print('Connection failed')
+
+def cmd_set(args):
+    item = data['items'][args.name]
+    set_slack_status(item['emoji'], item['text'])
+
+def format_item(emoji, text, key=None, l=None):
+    if l == None and key: l = len(key)
+    if key: print(('{}{:' + str(l) + 's}   ').format(Style.BRIGHT, key), end = '')
+    print(Style.RESET_ALL + text + ' ' + Style.DIM + '(' + emoji + ')' + Style.RESET_ALL)
+
+def cmd_list(args):
+    if args.format == 'pretty':
+        if not 'items' in data: 
+            print('No stored items')
+        else:
+            l = max(map(len, data['items'].keys()))
+            for name, item in data['items'].items():
+                format_item(item['emoji'], item['text'], name, l)
+    elif args.format == 'json':
+        if 'items' in data: 
+            print(json.dumps(data['items'], indent=2))
+        else:
+            print('{}')
+    elif args.format == 'simple':
+        if 'items' in data: 
+            for name in data['items']:
+                print(name)
+    else:
+        raise Exception("Unknown format: " + args.format)
+
+def cmd_add(args):
+    if 'items' not in data:
+        data['items'] = {}
+    data['items'][args.name] = dict(emoji=args.emoji, text=args.text)
+
+def cmd_config(args):
+    if 'config' not in data:
+        data['config'] = {}
+
+    if args.token:
+        data['config']['token'] = args.token
+
+if __name__ == '__main__':
+    if os.path.exists(STORAGE):
+        data = yaml.load(open(STORAGE, 'r'))
+    else:
+        data = dict()
+
+    parser = argparse.ArgumentParser(description='Plot statistics')
+    subparsers = parser.add_subparsers()
+
+    parser_get = subparsers.add_parser('get', help='display the current status')
+    parser_get.add_argument('--format', choices=('json', 'pretty', 'simple'), default='pretty')
+    parser_get.set_defaults(func=cmd_get)
+
+    parser_set = subparsers.add_parser('set', help='set a new status from the list')
+    parser_set.add_argument('name', choices=data.get('items', {}).keys())
+    parser_set.set_defaults(func=cmd_set)
+
+    parser_set_raw = subparsers.add_parser('set-raw', help='set a new status directly')
+    parser_set_raw.add_argument('emoji')
+    parser_set_raw.add_argument('text')
+    parser_set_raw.set_defaults(func=cmd_set_raw)
+
+    parser_add = subparsers.add_parser('add', help='add a new saved status')
+    parser_add.add_argument('name')
+    parser_add.add_argument('emoji')
+    parser_add.add_argument('text')
+    parser_add.set_defaults(func=cmd_add)
+
+    parser_list = subparsers.add_parser('list', help='list saved statuses')
+    parser_list.add_argument('--format', choices=('json', 'pretty', 'simple'), default='pretty')
+    parser_list.set_defaults(func=cmd_list)
+
+    parser_config = subparsers.add_parser('config', help='display the current status')
+    parser_config.add_argument('--token', help='set the login token')
+    parser_config.set_defaults(func=cmd_config)
+
+    args = parser.parse_args()
+    args.func(args)
+
+    yaml.dump(data, open(STORAGE, 'w'))
+

@@ -3,6 +3,8 @@ COMMAND=$1
 PLAYER=$(cat $HOME/.mcp-current)
 PLAYER=${PLAYER:-mpd}
 
+DISPLAY=:0
+
 case "$PLAYER" in
 mpd)
     case "$COMMAND" in
@@ -21,6 +23,37 @@ mpd)
     next) 
         mpc next
         ;;
+    current-song) 
+        mpc current -f '%artist%: $title% - %album%'
+        ;;
+    *)
+        echo "Unsupported command $COMMAND on player $PLAYER"
+        exit 1
+    esac
+    ;;
+streamkeys|chromium|chrome)
+    case "$COMMAND" in
+    volume-up) 
+        ~/.bin/pa-program-volume Chromium +5%
+        ;;
+    volume-down) 
+        ~/.bin/pa-program-volume Chromium -5%
+        ;;
+    toggle) 
+        sleep 0.1
+        xdotool key --clearmodifiers alt+shift+9
+        ;;
+    prev) 
+        sleep 0.1
+        xdotool key --clearmodifiers alt+shift+8
+        ;;
+    next) 
+        sleep 0.1
+        xdotool key --clearmodifiers alt+shift+0
+        ;;
+    current-song) 
+        echo "Chromium cannot display current track"
+        ;;
     *)
         echo "Unsupported command $COMMAND on player $PLAYER"
         exit 1
@@ -29,10 +62,10 @@ mpd)
 spotify|playerctl)
     case "$COMMAND" in
     volume-up) 
-        pa-program-volume Spotify +5%
+        ~/.bin/pa-program-volume Spotify +5%
         ;;
     volume-down) 
-        pa-program-volume Spotify -5%
+        ~/.bin/pa-program-volume Spotify -5%
         ;;
     toggle) 
         playerctl play-pause
@@ -42,6 +75,16 @@ spotify|playerctl)
         ;;
     next) 
         playerctl next
+        ;;
+    current-song) 
+        if $( playerctl status 2> /dev/null > /dev/null ); then
+            title=$(playerctl metadata xesam:title)
+            album=$(playerctl metadata xesam:album)
+            artist=$(playerctl metadata xesam:artist)
+            echo $artist: $title - $album
+        else
+            echo "no music playing"
+        fi
         ;;
     *)
         echo "Unsupported command $COMMAND on player $PLAYER"

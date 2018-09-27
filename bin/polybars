@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Terminate already running bar instances
+killall -q polybar
+
+# Wait until the processes have been shut down
+while pgrep -x polybar >/dev/null; do sleep 1; done
+
+# Launch bar1 and bar2
+MONITOR1=$(xrandr -q | grep ' connected' | grep eDP1 | awk '{print $1}')
+MONITOR2=$(xrandr -q | grep ' connected' | grep -v eDP1 | awk '{print $1}')
+
+if [ -z "$MONITOR1" ]; then
+    MONITOR1=$MONITOR2
+    MONITOR2=""
+fi
+
+[ ! -z $MONITOR2 ] && MONITOR="$MONITOR2" polybar -r external &
+[ -n "$MONITOR1" ] && MONITOR="$MONITOR1" polybar -r top &

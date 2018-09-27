@@ -7,17 +7,18 @@
 
 #convert -scale 5% -scale 2000% /tmp/scrot.png /tmp/blur.png
 #convert -blur 0x6 /tmp/scrot.png /tmp/blur.png
+/usr/bin/slock
 
-i3lock \
-    --color 000000 \
-    --insidevercolor=FFFFFF00 \
-    --insidewrongcolor=AA0000FF \
-    --insidecolor=FFFFFF33 \
-    --ringvercolor=FFFFFF44 \
-    --ringwrongcolor=AA0000FF \
-    --ringcolor=FFFFFFFF \
-    --textcolor=FFFFFF00 \
-    --linecolor=00000000 \
-    --keyhlcolor=FF6600FF \
-    --bshlcolor=000000FF 
+#i3lock \
+#    --color 000000 \
+#    --insidevercolor=FFFFFF00 \
+#    --insidewrongcolor=AA0000FF \
+#    --insidecolor=FFFFFF33 \
+#    --ringvercolor=FFFFFF44 \
+#    --ringwrongcolor=AA0000FF \
+#    --ringcolor=FFFFFFFF \
+#    --textcolor=FFFFFF00 \
+#    --linecolor=00000000 \
+#    --keyhlcolor=FF6600FF \
+#    --bshlcolor=000000FF 
 

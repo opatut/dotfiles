@@ -1,0 +1,4 @@
+#!/bin/bash 
+FILE=$1
+shift
+echo source $FILE | mysql -u root veloyo_dev $@

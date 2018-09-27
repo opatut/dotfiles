@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+
+import serial, os, sys
+from slack import set_slack_status, set_slack_snooze
+
+CURRENT_FILE = os.path.expanduser('~/.status')
+
+ALL_STATUSES = ["off", "red", "yellow", "green", "party"]
+
+SLACK_ICONS = {
+        "off": "",
+        "red": ":red_circle:",
+        "yellow": ":large_orange_diamond:",
+        "green": ":heavy_check_mark:",
+        "party": ""
+        }
+
+MESSAGES = {
+        "red": "Do not disturb",
+        "yellow": "Tell me if you need me",
+        "green": "I'm feeling chatty",
+        "party": "Let's party",
+        }
+
+class StatusSetter(object):
+    def set(self, status):
+
+class RetrySetter(object):
+    def set(self, status):
+
+class SlackSetter(object):
+    def set(self, status):
+        icon = SLACK_ICONS[status] if status in SLACK_ICONS else ""
+        icon = MESSAGES[status] if status in MESSAGES else ""
+
+        set_slack_status(icon, message)
+        if code == 1:
+            set_slack_snooze(30)
+        else:
+            set_slack_snooze(0)
+
+    [0, "off", "", ""],
+    [1, "red", ":red_circle:", "Do not disturb"],
+    [2, "yellow", ":large_orange_diamond:", "Tell me if you need me"],
+    [3, "green", ":heavy_check_mark:", "I'm feeling chatty"],
+
+if len(sys.argv) > 1:
+    current = int(sys.argv[1])
+else:
+    try:
+        with open(CURRENT_FILE, "r") as f:
+            current = int(f.read().strip())
+            current = (current + 1)%len(ALL_STATUSES)
+    except:
+        current = 0
+
+
+[code, name, icon, message] = ALL_STATUSES[current]
+
+f = [i for i in ['/dev/ttyACM0', '/dev/ttyUSB0'] if os.path.exists(i)][0]
+with serial.Serial(f, 9600) as port:
+    port.write([code])
+
+with open(CURRENT_FILE, "w") as f:
+    f.write(str(current))

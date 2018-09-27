@@ -1,0 +1,4 @@
+#!/bin/bash
+FILE=/tmp/scrot.png 
+scrot -s $FILE 
+chromium $FILE

@@ -1,0 +1,36 @@
+#!/bin/bash
+
+DMENU=/home/paul/.bin/dmenu
+
+manual() {
+    echo $1 | sudo tee /sys/devices/platform/applesmc.*/fan1_manual > /dev/null
+}
+
+speed() {
+    echo $1 | sudo tee /sys/devices/platform/applesmc.*/fan1_output > /dev/null
+}
+
+if [[ "$1" == "menu" ]]; then
+    X=$(echo -e "auto\nmbpfan\n5000\n6200\n4000\n3000\n2000\n1000" | $DMENU)
+    if [[ $X != "" ]]; then
+        $0 $X
+    fi
+elif [[ "$1" == "auto" ]]; then
+    sudo systemctl stop mbpfan
+    manual 0
+elif [[ "$1" == "mbpfan" ]]; then
+    sudo systemctl start mbpfan
+elif [[ "$1" =~ ^[0-9]+$ ]]; then
+    sudo systemctl stop mbpfan
+    manual 1
+    speed $1
+elif [[ "$1" == "" ]]; then
+    echo "Usage: fan <auto|mbpfan|SPEED|menu>"
+    echo ""
+    echo "  auto:   BIOS controlled"
+    echo "  mpbfan: use mbpfan service"
+    echo "  SPEED:  set RPM manually"
+    echo "  menu:   open dmenu"
+else
+    echo "Unknown mode: $1"
+fi

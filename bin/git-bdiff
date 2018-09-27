@@ -1,0 +1,4 @@
+#!/bin/bash
+BASE=$(git merge-base HEAD master)
+git diff $BASE HEAD $@
+

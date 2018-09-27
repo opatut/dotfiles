@@ -1,0 +1,118 @@
+#!/bin/bash
+
+DMENU=/home/paul/.bin/dmenu
+
+CHOICE=$1
+
+if [ -z "$CHOICE" ]; then
+    CHOICE=$(echo -e "status
+desktop
+wifi
+colorscheme
+slack-status
+slack-status-raw
+fan
+pm2
+pass
+otp
+bash
+lan
+dm
+xkill
+pskill -9
+disapprove
+scrot (open)
+scrot (copy)" | $DMENU)
+fi
+
+export PATH=/home/paul/.bin:$PATH 
+
+case $CHOICE in
+    desktop)
+        i3-dmenu-desktop --dmenu=$DMENU
+        ;;
+
+    slack-status)
+        CHOICE=$(slack-status list | $DMENU | awk '{ print $1 }')
+        [ -n "$CHOICE" ] && slack-status set $CHOICE
+        ;;
+
+    slack-status-raw)
+        EMOJI=$(echo -n "" | $DMENU -p "emoji (no colons)")
+        if [ -z "$EMOJI" ]; then exit; fi
+
+        MESSAGE=$(echo -n "" | $DMENU -p "message")
+        if [ -z "$MESSAGE" ]; then exit; fi
+
+        slack-status set-raw :$EMOJI: "$MESSAGE"
+        ;;
+
+    wifi*|lan*)
+        lan menu
+        ;;
+
+    fan)
+        fan menu
+        ;;
+
+    pm2*)
+        control-pm2       
+        ;;
+
+    pass*)
+        passmenu --type
+        ;;
+
+    otp*)
+        NAME=$(gopass ls --flat | $DMENU)
+        if [[ -z "$NAME" ]]; then exit; fi
+        OTP=$(gopass totp "${NAME}" | awk '{print $1}')
+        if [[ -z "$OTP" ]]; then exit; fi
+        xdotool type "${OTP}"
+        ;;
+
+    dm*)
+        DM_ARG=$(echo -e "above\nbelow\nclone\nsame-as\nright\nleft\nextern\nintern" | $DMENU)
+        [[ -n "$DM_ARG" ]] && dm "$DM_ARG"
+        ;;
+
+    bash*|history*)
+        bash -c "$(cat .zsh_history | sed 's/: [0-9]*:[0-9]*;//' | tac | $DMENU)"
+        ;;
+
+    xkill)
+        xkill
+        ;;
+
+    pskill*)
+        PID=$(ps hxo pid,command | $DMENU | awk '{print $1}')
+        [ -n "$PID" ] && kill -9 $PID
+        ;;
+
+    colorscheme)
+        DIR="$HOME/.dotfiles/wal-colorschemes"
+        COLORSCHEME=$(ls $DIR | grep .json | sed 's/\.json$//' | $DMENU)
+        [ -n "$COLORSCHEME" ] && wal -tf "$DIR/$COLORSCHEME.json"
+        ;;
+
+    scrot*open*)
+        sleep 0.1
+        scrot -s /tmp/scrot.png
+        eog /tmp/scrot.png
+        ;;
+
+    scrot*copy*)
+        sleep 0.1
+        scrot -s /tmp/scrot.png
+        cat /tmp/scrot.png | xclip -selection clipboard -target image/png
+        ;;
+
+    disapprove)
+        echo "ಠ_ಠ" | xclip -selection clipboard
+        ;;
+
+    status)
+        STATUS=$(echo -e "off\nred\nyellow\ngreen\nbreak\nphone\nmeeting" | $DMENU)
+        [[ -n "$STATUS" ]] && curl -X POST "localhost:8181/set/$STATUS"
+        ;;
+esac

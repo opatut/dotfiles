@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+# Adapt this path
+DIR="/home/paul/job/mesaic/mesaic/packages"
+watchman watch $DIR
+watchman watch-list
+# -- trigger <dir> <trigger-name< <pattern> -- <cmd to execute>
+watchman -- trigger $DIR copy-packages '**/*.*' -- copy-packages
+watchman trigger-list $DIR

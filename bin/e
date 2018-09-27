@@ -1,0 +1,8 @@
+#!/bin/bash
+if [[ "$1" == "" || -d "$1" ]]; then
+    files=$(ag -l '' $1 | fzf -m --bind 'shift-tab:select-all+accept' | xargs echo)
+else
+    files=$@
+fi
+
+gvim --servername vim --remote "$files"

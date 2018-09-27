@@ -1,0 +1,2 @@
+#!/bin/bash
+DEFAULT_VIDEO_DEVICE=$(rosrun imutype camera_select.py) /opt/ros/$ROS_DISTRO/bin/roslaunch $@

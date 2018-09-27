@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+pactl load-module module-bluetooth-discover
 bluetoothctl <<HEREDOC
 power on
 agent on

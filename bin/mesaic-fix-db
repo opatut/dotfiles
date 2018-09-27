@@ -1,0 +1,2 @@
+#!/bin/bash 
+echo source ~/job/mesaic/sql-dumps/fix-import.sql  | mysql -u root veloyo_dev $@

@@ -1,0 +1,2 @@
+#!/bin/bash 
+echo source ~/job/mesaic/sql-dumps/recreate-database.sql  | mysql -u root $@

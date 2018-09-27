@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+set -x
+
+sudo modprobe tun && sleep 0.2
+sudo systemctl start libvirtd && sleep 0.5
+sudo systemctl start virtlogd && sleep 0.2
+virsh -c qemu:///system net-start default && sleep 0.5
+minikube start --vm-driver kvm2 --disk-size 20g

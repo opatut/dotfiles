@@ -1,0 +1,4 @@
+#!/bin/bash
+SEDCMD=$1
+shift
+ag $@ -l | xargs -n1 sed -i -E "$SEDCMD"

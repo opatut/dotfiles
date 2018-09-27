@@ -57,7 +57,9 @@ xkb_symbols "basic" {
 
     key <BKSL> {[backslash, bar]};
 
-    key <LSGT> {[less, greater, guillemotleft, guillemotright]};
+    // key <LSGT> {[less, greater, guillemotleft, guillemotright]};
+    key <LSGT> {type="ONE_LEVEL", [Super_L]};
+    // key <LWIN> {[less, greater, guillemotleft, guillemotright]};
 
     key <CAPS> {type="ONE_LEVEL", [Escape]};
 
@@ -66,3 +68,11 @@ xkb_symbols "basic" {
     include "level3(ralt_switch)"
 };
 
+xkb_symbols "less_super" {
+    // replace key <LSGT> {[ Super_L ]};
+    // replace key <LWIN> {[ less, greater, guillemotleft, guillemotright]};
+
+    // replace key <CAPS> {type="ONE_LEVEL", [Super_L]};
+    replace key <LSGT> {type="ONE_LEVEL", [Super_L]};
+    replace key <LWIN> {type="ONE_LEVEL", [less, greater, guillemotleft, guillemotright]};
+};

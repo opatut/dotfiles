@@ -19,3 +19,10 @@ build
 yarn.lock
 _minted-index
 *~
+~*
+.build-tools.cson
+.git
+.vscode
+vendor
+.tags
+flow-typed

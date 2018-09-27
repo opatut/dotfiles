@@ -8,29 +8,44 @@
 ;=====================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-; background = #E8000000
-background-alt = ${colors.primary}
-;foreground = ${xrdb:color7:#222}
-; foreground = #DEDEDE
-foreground-alt = #dfdf66
-; primary = #ffb52a
-; secondary = #e60053
-; alert = #bd2c40
-
 alert = ${xrdb:color1}
-primary = ${xrdb:color2}
+; primary = #4191d9
+primary = #63c5ff
+; primary = ${xrdb:color2}
 secondary = ${xrdb:color4}
 foreground = ${xrdb:color15}
 ; background = ${xrdb:color0}
-background = #00000000
+background = #AA000000
+background-alt = ${colors.primary}
+
+; labelBattery    = ${xrdb:color2}
+; labelCpu        = ${xrdb:color3}
+; labelDate       = ${xrdb:color12}
+; labelClock      = ${xrdb:color13}
+; labelMemory     = ${xrdb:color5}
+; labelNowplaying = ${xrdb:color6}
+; labelTemp       = ${xrdb:color10}
+; labelVolume     = ${xrdb:color11}
+; labelWlan       = ${xrdb:color9}
+; labelWorktime   = ${xrdb:color11}
+labelBattery    = ${colors.primary}
+labelCpu        = ${colors.primary}
+labelDate       = ${colors.primary}
+labelClock      = ${colors.primary}
+labelMemory     = ${colors.primary}
+labelNowplaying = ${colors.primary}
+labelTemp       = ${colors.primary}
+labelVolume     = ${colors.primary}
+labelWlan       = ${colors.primary}
+labelWorktime   = ${colors.primary}
 
 [bar/top]
 monitor = ${env:MONITOR:eDP1}
 width = 100%
-height = 24
+height = 32
+; bottom = true
 ;offset-x = 1%
-; offset-y = 10%
+; offset-y = 0%
 radius = 0
 fixed-center = false
 
@@ -38,8 +53,6 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 0
-line-color = #f00
-
 border-size = 0
 border-color = #00000000
 
@@ -49,16 +62,16 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "statusbar:size=10;3"
-; font-1 = "Fira Mono:size=9;2"
-; font-2 = "Fira Mono:size=10:weight=bold;2"
-font-1 = "Misc Tamsyn:size=12;2"
-font-2 = "Misc Tamsyn:size=12:weight=bold;2"
-font-3 = "Fira Mono:size=9;2"
+font-0 = "statusbar:size=11;3"
+font-1 = "Fira Mono:size=11;2"
+font-2 = "Fira Mono:size=11:weight=bold;2"
+; font-1 = "Misc Tamsyn:size=14;2"
+; font-2 = "Misc Tamsyn:size=14:weight=bold;2"
+font-3 = "Fira Mono:size=11;2"
 
 modules-left = i3 
 ; modules-center = xwindow
-modules-right = nowplaying temp volume memory cpu wlan battery date 
+modules-right = worktime nowplaying volume memory cpu wlan battery date clock
 
 tray-position = right
 tray-padding = 0
@@ -103,19 +116,33 @@ font-1 = ${bar/top.font-1}
 font-2 = ${bar/top.font-2}
 
 modules-left = i3 
-modules-right = date 
+modules-right = nowplaying wlan battery date clock
+
+[module/worktime]
+type = custom/script
+interval = 5
+exec = curl -s 'http://localhost:8181/stats?formatted' | jq -j '.today.active + " (" + .current + ")"'
+format = <label>
+label = %output:0:80:...%
+format-prefix = "WRK "
+format-prefix-foreground = ${colors.labelWorktime}
 
 [module/nowplaying]
 type = custom/script
 interval = 10
 exec = mcp current-song 
-format =   <label>
+format = <label>
+label = %output:0:40:...%
+format-prefix = "MUS "
+format-prefix-foreground = ${colors.labelNowplaying}
 
 [module/temp]
 type = custom/script
 interval = 10
-exec = sensors | grep Ts0P | awk '{print $2}' | grep -Eo '\-?[0-9\.]+'
-format =  <label>°C
+exec = echo $(sensors | grep Ts0P | awk '{print $2}' | grep -Eo '\-?[0-9\.]+') \| $(sensors | grep "Package id 0" | awk '{print $4}' | grep -Eo '\-?[0-9\.]+')
+format = <label>°C
+format-prefix = "TMP "
+format-prefix-foreground = ${colors.labelTemp}
 
 [module/slack]
 type = custom/script
@@ -133,7 +160,7 @@ index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-pin-workspaces = true
+pin-workspaces = false
 
 label-mode-padding = 1
 label-mode-foreground = #000
@@ -144,19 +171,19 @@ label-focused = %index%
 label-focused-font = 3
 label-focused-background = ${colors.background-alt}
 label-focused-foreground = ${colors.background}
-label-focused-underline = ${colors.primary}
 label-focused-padding = ${self.label-mode-padding}
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-padding = ${self.label-mode-padding}
 label-unfocused-font = ${self.label-focused-font}
+label-unfocused-background = #000
+label-unfocused-foreground = #FFF
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
-label-visible-background = #666
-label-visible-foreground = #888
-label-visible-underline = ${self.label-focused-underline}
+label-visible-background = ${colors.background}
+label-visible-foreground = ${colors.primary}
 label-visible-padding = ${self.label-mode-padding}
 
 ; urgent = Workspace with urgency hint set
@@ -180,17 +207,15 @@ label-song-ellipsis = true
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
-format-underline = #f90000
+format-prefix = "CPU "
+format-prefix-foreground = ${colors.labelCpu}
 label = %percentage%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
-format-underline = #4bffdc
+format-prefix = "MEM "
+format-prefix-foreground = ${colors.labelMemory}
 label = %percentage_used%%
 
 [module/wlan]
@@ -198,58 +223,60 @@ type = internal/network
 interface = wlan0
 interval = 3.0
 
-format-connected =  <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
+format-connected-prefix = "WIFI "
+format-connected-prefix-foreground = ${colors.labelWlan}
+format-connected = <label-connected>
+label-connected = %essid% %local_ip%
 
-format-disconnected = <label-disconnected> no wifi
-label-disconnected = 
-label-disconnected-foreground = ${colors.alert}
+format-disconnected-prefix = "WIFI "
+format-disconnected-prefix-foreground = ${colors.labelWlan}
+format-disconnected = no wifi
+format-disconnected-foreground = ${colors.alert}
 
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 60
 
-date =
+date = "%b %d"
 date-alt = " %Y-%m-%d"
 
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground}
-format-underline = #0a6cf5
+format-prefix = "DAY "
+format-prefix-foreground = ${colors.labelDate}
+format-prefix-font = 3
 
-label = %date% %time%
+label = %date%
+
+[module/clock]
+type = internal/date
+interval = 5
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = "NOW "
+format-prefix-foreground = ${colors.labelClock}
+format-prefix-font = 3
+
+label = %time%
 
 [module/volume]
-type = internal/volume
+type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = 
-label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground}
-label-muted = sound muted
+format-volume = <label-volume>
+format-volume-prefix = "VOL "
+format-volume-prefix-foreground = ${colors.labelVolume}
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground}
+format-muted-prefix = "VOL "
+format-muted-foreground = ${colors.labelVolume}
+label-muted = mute
+label-muted-foreground = ${colors.foreground}
+label-volume = %percentage%%
+
 
 [module/battery]
 type = internal/battery
@@ -257,15 +284,17 @@ battery = BAT0
 adapter = ADP1
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging = <label-charging> <animation-charging> 
+format-charging-prefix = "BAT "
+format-charging-prefix-foreground = ${colors.labelBattery}
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-prefix = "BAT "
+format-discharging-prefix-foreground = ${colors.labelBattery}
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground}
-format-full-underline = ${self.format-charging-underline}
+format-full = <label-full> 
+format-full-prefix = "BAT "
+format-full-prefix-foreground = ${colors.labelBattery}
 
 ramp-capacity-0 = 
 ramp-capacity-0-foreground = ${colors.alert}
@@ -287,9 +316,7 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
 
 label = %temperature%
 label-warn = %temperature%

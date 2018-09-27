@@ -21,6 +21,6 @@ complete -F _netctl -o default wifi
 . /usr/share/bash-completion/completions/systemctl
 complete -F _systemctl sc
 
-export PATH=/tmp/yaourt-tmp-paul/aur-sencha-cmd/pkg/sencha-cmd/opt/Sencha/Cmd/3.1.2.342:$PATH
+export PATH=$HOME/.bin:/tmp/yaourt-tmp-paul/aur-sencha-cmd/pkg/sencha-cmd/opt/Sencha/Cmd/3.1.2.342:$PATH
 
 export SENCHA_CMD_3_0_0="/tmp/yaourt-tmp-paul/aur-sencha-cmd/pkg/sencha-cmd/opt/Sencha/Cmd/3.1.2.342"

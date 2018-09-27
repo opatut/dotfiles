@@ -1,0 +1,27 @@
+[Default Applications]
+application/pdf=evince.desktop
+message/rfc822=userapp-Thunderbird-EZJFSY.desktop
+text/html=chromium.desktop
+x-scheme-handler/about=chromium.desktop
+x-scheme-handler/http=chromium.desktop
+x-scheme-handler/https=chromium.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-EZJFSY.desktop
+x-scheme-handler/nylas=nylas.desktop
+x-scheme-handler/unknown=chromium.desktop
+image/jpeg=eog.desktop
+image/png=eog.desktop
+text/plain=e.desktop
+inode/directory=e.desktop
+
+[Added Associations]
+application/x-isi-export-format=kde4-kbibtex.desktop;kde4-kate.desktop;
+application/x-research-info-systems=kde4-kbibtex.desktop;kde4-kate.desktop;
+image/jpeg=eog.desktop;gimp.desktop;
+message/rfc822=userapp-Thunderbird-EZJFSY.desktop;
+text/x-bibtex=kde4-kbibtex.desktop;kde4-kate.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-EZJFSY.desktop;
+
+[Added KDE Service Associations]
+application/x-isi-export-format=kbibtexpart.desktop;katepart.desktop;
+application/x-research-info-systems=kbibtexpart.desktop;katepart.desktop;
+text/x-bibtex=kbibtexpart.desktop;katepart.desktop;

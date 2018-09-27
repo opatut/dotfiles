@@ -1,3 +1,14 @@
+Xcursor.theme: bridge
+
+! dpi
+! Xft.dpi: 144
+! Xft.autohint: 0
+! Xft.lcdfilter:  lcddefault
+! Xft.hintstyle:  hintfull
+! Xft.hinting: 1
+! Xft.antialias: 1
+! Xft.rgba: rgb!
+
 !black
 *color0  : #2E3436
 *color8  : #555753
@@ -22,3 +33,34 @@
 ! white
 *color7  : #D3D7CF
 *color15 : #EEEEEC
+
+! *.foreground:   #c5c8c6
+! *.background:   #1d1f21
+! *.cursorColor:  #c5c8c6
+!
+! *.color0:       #282a2e
+! *.color8:       #373b41
+! *.color1:       #7a2912
+! *.color9:       #7a2912
+! *.color2:       #808e34
+! *.color10:      #808e34
+! *.color3:       #d2761c
+! *.color11:      #d2761c
+! *.color4:       #587f65
+! *.color12:      #587f65
+! *.color5:       #808e34
+! *.color13:      #808e34
+! *.color6:       #587f65
+! *.color14:      #587f65
+! *.color7:       #707880
+! *.color15:      #c5c8c6
+!
+!! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: #273238, #273238, #1e2529
+rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
+rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
+rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844
+rofi.case-sensitive: false

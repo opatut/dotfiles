@@ -3,3 +3,7 @@ netifaces
 psutil
 colour
 basiciw
+requests
+colorama
+pyyaml
+requests

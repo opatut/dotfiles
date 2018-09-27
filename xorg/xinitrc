@@ -3,7 +3,7 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 
 xsettings() {
     # Set default display options
-    ~/.bin/dm
+    ~/.bin/dm i
     
     # Reload wallpaper
     . ~/.fehbg
@@ -17,16 +17,24 @@ xsettings() {
     xset -dpms
 
     # Load more X settings
-    xrdb ~/.Xresources
+    xrdb -merge ~/.Xresources
+
+    # Lockscreen
+    systemctl --user start XAutoLock.service
+
+    # StatusLED
+    systemctl --user start StatusLED.service
 }
 
 autostart() {
     #mpd ~/.mpd/mpd.conf &
-    # pidgin &
+    #pidgin &
+    ~/.bin/polybars 
     dunst &
     urxvtd &
     redshift-gtk &
-    xcompmgr &
+    # xcompmgr &
+    compton --config ~/.dotfiles/compton/config &
 }
 
 wm() {
@@ -45,4 +53,3 @@ wm() {
 xsettings &
 autostart &
 wm
-

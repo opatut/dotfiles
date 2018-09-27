@@ -73,7 +73,6 @@ export NODE_PATH="$HOME/.npm-global/lib/node_modules"
 export ANDROID_HOME=/opt/android-sdk
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export DEV_TOOL=eval
-export SLACK_TOKEN="xoxp-4177700905-11884566994-174809795972-597c806d101717509a1c8ec86b49a013"
 export HISTSIZE=100000000
 export SAVEHIST=$HISTSIZE
 export KOPS_STATE_STORE=s3://kops.mesaic.io

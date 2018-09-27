@@ -3,7 +3,7 @@ set nocompatible
 
 set mouse=a
 set shortmess+=I
-set clipboard+=unnamed
+set clipboard=unnamedplus
 set backspace=2
 set history=100
 set ruler
@@ -16,6 +16,8 @@ set showmatch
 set matchpairs+=<:>
 set mat=5
 set number
+set nobackup
+set noswapfile
 
 " Colors
 set t_Co=256
@@ -23,18 +25,8 @@ colorscheme wombat
 
 let mapleader = "\<space>"
 
-" gvim only
-set background=dark
-
-" Other font options:
-" - Droid Sans Mono
-" - Input Mono Regular
-" - Source Code Pro
-" - Fira Code
-
-set guifont=Cousine\ 10
-set linespace=0
-
+set history=10000
+set scrolloff=5
 
 " cursor settings
 set nocursorline          " don't highlight cursor line for performance
@@ -69,7 +61,7 @@ set wildmode=list:longest,full
 " automaticall read/save files
 set autoread
 au FocusGained,BufEnter * :silent! !
-au FocusLost,WinLeave * :silent! update
+" au FocusLost,WinLeave * :silent! update
 
 " searching
 set hlsearch            " highlight all search results
@@ -77,6 +69,8 @@ set incsearch           " increment search
 set ignorecase          " case-insensitive search
 set smartcase           " upper-case sensitive search
 
+" Load the version of matchit.vim that ships with Vim (better %)
+runtime! macros/matchit.vim
 
 " syntax highlighting
 syntax on               " enable/disable syntax highlighting
@@ -105,3 +99,25 @@ set undofile
 let g:vim_markdown_new_list_item_indent = 2
 
 let g:flow#enable=0
+
+" minibufexpl
+let g:miniBufExplVSplit = 20
+let g:miniBufExplBRSplit = 0
+let g:miniBufExplorerAutoStart = 0
+
+" jsx/javsacript
+" let g:jsx_ext_required = 1
+
+" 
+let g:javascript_plugin_flow = 1
+
+let g:ags_agexe = 'ag --nocolor'
+let g:ags_winplace = 'far-right'
+
+" xolox/vim-notes
+let g:notes_directories = ['~/documents/notes']
+let g:notes_suffix = '.txt'
+let g:notes_smart_quotes = 0
+let g:notes_conceal_url = 0
+let g:notes_conceal_bold = 0
+let g:notes_conceal_italic = 0

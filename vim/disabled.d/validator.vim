@@ -1,0 +1,19 @@
+let g:validator_javascript_checkers = ['eslint', 'flow']
+let g:validator_javascript_flow_binary = '/home/paul/.npm-global/bin/flow'
+let g:validator_javascript_eslint_binary = '/home/paul/.npm-global/bin/eslint_d'
+let g:validator_error_symbol = 'X'
+let g:validator_warning_symbol = 'X'
+let g:validator_filetype_map = {"javascript.jsx": "javascript"}
+" let g:validator_auto_open_quickfix = 1
+let g:validator_debug = 1
+
+" let g:validator_error_symbol = get(g:, 'validator_error_symbol', s:validator_symbol)
+" let g:validator_warning_symbol = get(g:, 'validator_warning_symbol', s:validator_symbol)
+" let g:validator_style_error_symbol = get(g:, 'validator_style_error_symbol', g:validator_error_symbol)
+" let g:validator_style_warning_symbol = get(g:, 'validator_style_warning_symbol', g:validator_warning_symbol)
+" let g:validator_debug = get(g:, 'validator_debug', 0)
+" let g:validator_error_msg_format = get(g:, 'validator_error_msg_format', '● %d/%d issues')
+" let g:validator_auto_open_quickfix = get(g:, 'validator_auto_open_quickfix', 0)
+" let g:validator_filetype_map = get(g:, 'validator_filetype_map', {})
+" let g:validator_ignore = extend(get(g:, 'validator_ignore', []), s:ignores)
+" let g:validator_permament_sign = get(g:, 'validator_permament_sign', 0)

@@ -8,7 +8,6 @@ CHOICE=$1
 if [ -z "$CHOICE" ]; then
     CHOICE=$(echo -e "status
 desktop
-wifi
 colorscheme
 slack-status
 slack-status-raw
@@ -47,10 +46,6 @@ case $CHOICE in
         if [ -z "$MESSAGE" ]; then exit; fi
 
         slack-status set-raw :$EMOJI: "$MESSAGE"
-        ;;
-
-    wifi*|lan*)
-        lan menu
         ;;
 
     fan)

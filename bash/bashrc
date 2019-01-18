@@ -15,9 +15,6 @@ complete -cf sudo
 . /usr/share/bash-completion/completions/pacman
 complete -F _pacman -o default spacman
 
-. /usr/share/bash-completion/completions/netctl
-complete -F _netctl -o default wifi
-
 . /usr/share/bash-completion/completions/systemctl
 complete -F _systemctl sc
 

@@ -1,3 +1,5 @@
-for file in id_rsa id_ecdsa; do
-	[ -f ~/.ssh/$file ] && eval `keychain --quiet --eval --agents ssh $file`
-done
+if which keychain > /dev/null; then 
+  for file in id_rsa id_ecdsa; do
+    [ -f ~/.ssh/$file ] && eval `keychain --quiet --eval --agents ssh $file`
+  done
+fi

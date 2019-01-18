@@ -20,7 +20,9 @@ alias date3='date +"%Y%m%d-%H%M%S"'
 alias date4='date +"%Y-%m-%d %H:%M:%S"'
 alias gls='git status'
 alias gs='git status'
-alias git='hub'
+if which hub > /dev/null; then
+  alias git='hub'
+fi
 alias gwd='git wdiff'
 alias gpn='git push --no-verify'
 alias gcn='git commit --no-verify'
@@ -71,7 +73,6 @@ daa() {
 
 export TERM=xterm-256color
 export GOPATH=$HOME/src/go
-export PATH="/usr/local/bin:/usr/lib/colorgcc/bin:/opt/android-sdk/platform-tools:$HOME/.android/sdk/platform-tools:$HOME/.android/sdk/tools:$HOME/.gem/ruby/2.1.0/bin:$HOME/.bin/:$(ruby -e 'puts Gem.user_dir')/bin:.:$HOME/.npm-global/bin/:$GOPATH/bin:$PATH:$HOME/.gem/ruby/2.4.0/bin"
 export EDITOR=vim
 export WINE_DEBUG=-all
 export BROWSER=chromium
@@ -84,6 +85,22 @@ export DEV_TOOL=eval
 export HISTSIZE=100000000
 export SAVEHIST=$HISTSIZE
 export KOPS_STATE_STORE=s3://kops.mesaic.io
+
+# new PATH variable
+PATH=".:$PATH"
+PATH="$HOME/.npm-global/bin/:$PATH"
+PATH="$GOPATH/bin:$PATH"
+if which ruby > /dev/null; then
+  PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+PATH="/usr/local/bin:$PATH"
+PATH="/usr/lib/colorgcc/bin:$PATH"
+PATH="/opt/android-sdk/platform-tools:$PATH"
+PATH="$HOME/.android/sdk/platform-tools:$PATH"
+PATH="$HOME/.android/sdk/tools:$PATH"
+PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
+PATH="$HOME/.bin/:$PATH"
+export PATH
 
 MESAIC_ROOT=$HOME/job/mesaic/mesaic
 if [ -f "$MESAIC_ROOT/packages/mesaic-cli/mesaic.bashrc" ]; then

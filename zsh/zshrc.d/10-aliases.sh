@@ -1,15 +1,5 @@
 #!/bin/bash
 
-unset GREP_OPTIONS
-
-
-function E() {
-    # e $@
-    gvim --role floating -geometry 100x24 $@
-    # -c 'startinsert'
-}
-
-
 alias bootlog='sudo journalctl -b'
 alias clip='xclip -selection clipboard'
 alias clocksync='sudo ntpd -qg && sudo hwclock --systohc'
@@ -59,75 +49,17 @@ alias k='kubectl'
 alias kf='kubectl -n foo'
 alias caro='cargo run -q --'
 alias pr='hub pull-request | clip'
-alias d='docker'
-alias ds='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.RunningFor}}\t{{.Status}}\t{{.Image}}"'
 alias genact='docker run -it --rm svenstaro/genact'
 alias inode="node -i -e 'const lodash = require(\"lodash\"); for (const k in lodash) { global[\"_\" + k] = lodash[k]; }'"
-da() {
-    docker $@ $(docker ps -q)
-}
 
-daa() {
-    docker $@ $(docker ps -qa)
-}
+# Docker
 
-export TERM=xterm-256color
-export GOPATH=$HOME/src/go
-export EDITOR=vim
-export WINE_DEBUG=-all
-export BROWSER=chromium
-# export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
-export NODE_REPL_HISTORY_FILE="$HOME/.nodehistory"
-export NODE_PATH="$HOME/.npm-global/lib/node_modules"
-export ANDROID_HOME=/opt/android-sdk
-export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
-export DEV_TOOL=eval
-export HISTSIZE=100000000
-export SAVEHIST=$HISTSIZE
-export KOPS_STATE_STORE=s3://kops.mesaic.io
+alias d='docker'
+alias ds='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.RunningFor}}\t{{.Status}}\t{{.Image}}"'
+da() { docker $@ $(docker ps -q) }
+daa() { docker $@ $(docker ps -qa) }
 
-# new PATH variable
-PATH=".:$PATH"
-PATH="$HOME/.npm-global/bin/:$PATH"
-PATH="$GOPATH/bin:$PATH"
-if which ruby > /dev/null; then
-  PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
-fi
-PATH="/usr/local/bin:$PATH"
-PATH="/usr/lib/colorgcc/bin:$PATH"
-PATH="/opt/android-sdk/platform-tools:$PATH"
-PATH="$HOME/.android/sdk/platform-tools:$PATH"
-PATH="$HOME/.android/sdk/tools:$PATH"
-PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
-PATH="$HOME/.bin/:$PATH"
-export PATH
-
-MESAIC_ROOT=$HOME/job/mesaic/mesaic
-if [ -f "$MESAIC_ROOT/packages/mesaic-cli/mesaic.bashrc" ]; then
-  source $MESAIC_ROOT/packages/mesaic-cli/mesaic.bashrc
-  alias m=mesaic
-  alias ml="mesaic logs"
-  alias ms="mesaic start"
-  alias mb="mesaic build"
-
-  # mac: "mesaic (start) api-cli", e.g. "mac migrate" or "mac seed presets.dev"
-  function mac() { 
-      node $MESAIC_ROOT/packages/mesaic-cli start --no-build api-cli $@ | bunyan 
-  }
-fi
-
-alias workflow="mysql -u root mesaic_dev -e 'select config from order_workflows where id = \"ac997b0b-f3d8-487a-968f-438b1993c673\";' -sN | jq"
-
-
-function mesaic-logs () {
-  project=$1
-  shift
-  pm2 logs --raw -f $project | bunyan $@
-}
-
-function mesaic-errors () {
-  project=$1
-  shift
-  mesaic-logs $project -c '!this.req || this.err' $@
-}
+# Editor (new GVIM instance)
+function E() { gvim --role floating -geometry 100x24 $@ }
+# accompanied by binary in ~/.bin/e
 

@@ -20,7 +20,7 @@ xsettings() {
     xrdb -merge ~/.Xresources
 
     # Lockscreen
-    systemctl --user start XAutoLock.service
+    # systemctl --user start XAutoLock.service
 
     # StatusLED
     systemctl --user start StatusLED.service
@@ -30,11 +30,11 @@ autostart() {
     #mpd ~/.mpd/mpd.conf &
     #pidgin &
     ~/.bin/polybars 
-    dunst &
+    # dunst &
     urxvtd &
     redshift-gtk &
     # xcompmgr &
-    compton --config ~/.dotfiles/compton/config &
+    # compton --config ~/.dotfiles/compton/config &
 }
 
 wm() {

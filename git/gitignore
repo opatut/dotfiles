@@ -26,3 +26,6 @@ _minted-index
 vendor
 .tags
 flow-typed
+.idea
+*.iml
+.jekyll-metadata

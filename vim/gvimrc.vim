@@ -19,8 +19,8 @@ set background=dark
 
 " set guifont=Cousine\ 12
 " set guifont=Droid\ Sans\ Mono\ 11
-" set guifont=Fira\ Mono\ 14
-" set guifont=Input\ Mono\ Regular\ 10
+" set guifont=Fira\ Mono\ 12
+" set guifont=Input\ Mono\ Regular\ 11
 " set guifont=Misc\ Tamsyn\ Regular\ 12
 " set guifont=Source\ Code\ Pro\ 12
 " set guifont=Roboto\ Mono\ 11

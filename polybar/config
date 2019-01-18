@@ -71,7 +71,7 @@ font-3 = "Fira Mono:size=11;2"
 
 modules-left = i3 
 ; modules-center = xwindow
-modules-right = worktime nowplaying volume memory cpu wlan battery date clock
+modules-right = worktime nowplaying volume memory cpu battery date clock
 
 tray-position = right
 tray-padding = 0
@@ -116,7 +116,7 @@ font-1 = ${bar/top.font-1}
 font-2 = ${bar/top.font-2}
 
 modules-left = i3 
-modules-right = nowplaying wlan battery date clock
+modules-right = nowplaying battery date clock
 
 [module/worktime]
 type = custom/script
@@ -130,7 +130,7 @@ format-prefix-foreground = ${colors.labelWorktime}
 [module/nowplaying]
 type = custom/script
 interval = 10
-exec = mcp current-song 
+exec = /home/paul/.bin/mcp current-song 
 format = <label>
 label = %output:0:40:...%
 format-prefix = "MUS "
@@ -201,7 +201,7 @@ icon-play = 
 icon-pause = 
 icon-next = 
 
-label-song-maxlen = 40
+label-song-maxlen = 30
 label-song-ellipsis = true
 
 [module/cpu]
@@ -220,7 +220,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlan0
+interface = wlp3s0
 interval = 3.0
 
 format-connected-prefix = "WIFI "

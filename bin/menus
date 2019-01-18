@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DMENU=/home/paul/.bin/dmenu
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 CHOICE=$1
 
@@ -20,7 +21,8 @@ lan
 dm
 xkill
 pskill -9
-disapprove
+emoji
+credit_card
 scrot (open)
 scrot (copy)" | $DMENU)
 fi
@@ -107,12 +109,23 @@ case $CHOICE in
         cat /tmp/scrot.png | xclip -selection clipboard -target image/png
         ;;
 
-    disapprove)
-        echo "ಠ_ಠ" | xclip -selection clipboard
+    emoji)
+        char=$(cat $DIR/faces.txt | $DMENU | cut -f1)
+        if [ -n "$char" ]; then
+            xdotool type --delay 50 "$char"
+        fi
         ;;
 
     status)
         STATUS=$(echo -e "off\nred\nyellow\ngreen\nbreak\nphone\nmeeting" | $DMENU)
         [[ -n "$STATUS" ]] && curl -X POST "localhost:8181/set/$STATUS"
+        ;;
+
+    credit_card)
+        xdotool type --delay 50 4242424242424242
+        xdotool key Tab; sleep 0.2
+        xdotool type --delay 50 123
+        xdotool key Tab; sleep 0.2
+        xdotool type --delay 50 1234
         ;;
 esac

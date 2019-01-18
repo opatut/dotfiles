@@ -62,6 +62,7 @@ Plug 'digitaltoad/vim-pug'
 " Plug 'vim-latex/vim-latex'
 Plug 'IN3D/vim-raml'
 Plug 'calviken/vim-gdscript3' " godot game engine
+Plug 'sirtaj/vim-openscad' " OpenSCAD
 
 """ Javascript
 " Plug 'kern/vim-es7'

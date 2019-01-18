@@ -58,8 +58,16 @@ alias kf='kubectl -n foo'
 alias caro='cargo run -q --'
 alias pr='hub pull-request | clip'
 alias d='docker'
+alias ds='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.RunningFor}}\t{{.Status}}\t{{.Image}}"'
 alias genact='docker run -it --rm svenstaro/genact'
 alias inode="node -i -e 'const lodash = require(\"lodash\"); for (const k in lodash) { global[\"_\" + k] = lodash[k]; }'"
+da() {
+    docker $@ $(docker ps -q)
+}
+
+daa() {
+    docker $@ $(docker ps -qa)
+}
 
 export TERM=xterm-256color
 export GOPATH=$HOME/src/go

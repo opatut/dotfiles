@@ -1,8 +1,10 @@
 #!/bin/bash
+echo $1 >> /tmp/lg
 if [[ "$1" == "" || -d "$1" ]]; then
     files=$(ag -l '' $1 | fzf -m --bind 'shift-tab:select-all+accept' | xargs echo)
+    gvim --servername vim --remote "$files"
+# elif [[ "$1" ~= .cs(:\d+)$ ]]; then
+#     code $(echo $1 | sed 's/:.*$//')
 else
-    files=$@
+    gvim --servername vim --remote "$@"
 fi
-
-gvim --servername vim --remote "$files"

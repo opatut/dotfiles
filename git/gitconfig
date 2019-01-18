@@ -62,3 +62,5 @@
 [credential]
 	helper = !pass-git-helper $@
 	useHttpPath = true
+[rerere]
+	enabled = 1

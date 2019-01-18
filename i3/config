@@ -230,4 +230,8 @@ for_window [class="hackedfortress"] floating enable
 for_window [window_role="floating"] floating enable
 for_window [class="gtk-recordMyDesktop"] floating enable
 
+assign [class="gvim"] 1
+assign [class="chromium"] 3
+
+
 assign [class="Pidgin"] 9

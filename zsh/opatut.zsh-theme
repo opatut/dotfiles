@@ -10,8 +10,16 @@ function virtualenv_info {
     [ $VIRTUAL_ENV ] && echo "%{$fg_bold[black]%} using %{$fg_bold[magenta]%}"`basename $VIRTUAL_ENV`
 }
 
-_WHO="%{$fg_bold[blue]%}%n@%m%{$fg_bold[black]%}"
-_WHERE="%{$fg_bold[yellow]%}%d%{$fg_bold[black]%}"
+if [ -z "$SSH_CLIENT" ]; then
+	whocolor="$fg_bold[blue]"
+	wherecolor="$fg_bold[yellow]"
+else
+	whocolor="$fg_bold[magenta]"
+	wherecolor="$fg_bold[cyan]"
+fi
+
+_WHO="%{$whocolor%}%n@%m%{$fg_bold[black]%}"
+_WHERE="%{$wherecolor%}%d%{$fg_bold[black]%}"
 _INFO=$(git_prompt_info)$(virtualenv_info)
 
 PROMPT='
@@ -22,3 +30,5 @@ ZSH_THEME_GIT_PROMPT_PREFIX=" on "
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_DIRTY="$fg_bold[red]"
 ZSH_THEME_GIT_PROMPT_CLEAN="$fg_bold[green]"
+
+# vim: ft=zsh

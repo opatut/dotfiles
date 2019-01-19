@@ -6,7 +6,7 @@ xsettings() {
     ~/.bin/dm i
     
     # Reload wallpaper
-    . ~/.fehbg
+    # . ~/.fehbg
 
     # Set keyboard settings
     setxkbmap us_de

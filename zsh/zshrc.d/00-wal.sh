@@ -1,2 +1,3 @@
 #!/bin/bash
-which wal > /dev/null && wal -tr
+WALFILE=~/.cache/wal/sequences
+[ -f $WALFILE ] && cat $WALFILE

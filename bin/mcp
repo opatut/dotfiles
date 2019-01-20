@@ -6,25 +6,29 @@ PLAYER=${PLAYER:-mpd}
 DISPLAY=:0
 
 case "$PLAYER" in
-mpd)
+mpd*)
+    HOST=$(cat $HOME/.mcp-mpd-host)
+    HOST=${HOST:-localhost}
+    MPC="mpc -h $HOST"
+
     case "$COMMAND" in
     volume-up) 
-        mpc volume +5
+        $MPC volume +5
         ;;
     volume-down) 
-        mpc volume -5
+        $MPC volume -5
         ;;
     toggle) 
-        mpc toggle
+        $MPC toggle
         ;;
     prev) 
-        mpc prev
+        $MPC prev
         ;;
     next) 
-        mpc next
+        $MPC next
         ;;
     current-song) 
-        mpc current -f '%artist%: $title% - %album%'
+        $MPC current -f '%artist%: %title% - %album%'
         ;;
     *)
         echo "Unsupported command $COMMAND on player $PLAYER"

@@ -1,0 +1,11 @@
+{
+  "*.js": {"alternate": ["{}.test.js", "{}.example.js", "{}.less"]},
+  "*.test.js": {"alternate": ["{}.example.js", "{}.less", "{}.js"]},
+  "*.example.js": {"alternate": ["{}.less", "{}.js", "{}.test.js"]},
+  "*.less": {"alternate": ["{}.js", "{}.test.js", "{}.example.js"]},
+
+  "*index.js": {"alternate": ["{}index.test.js", "{}index.example.js", "{}styles.less"]},
+  "*index.test.js": {"alternate": ["{}index.example.js", "{}styles.less", "{}index.js"]},
+  "*index.example.js": {"alternate": ["{}styles.less", "{}index.js", "{}index.test.js"]},
+  "*styles.less": {"alternate": ["{}index.js", "{}index.test.js", "{}index.example.js"]}
+}

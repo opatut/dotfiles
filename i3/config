@@ -29,7 +29,7 @@ font xft:Fira Mono 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec roxterm --geometry 1000x600
+bindsym $mod+Return exec roxterm
 bindsym $mod+shift+Return exec gvim --servername vim
 bindsym ctrl+mod1+u exec --no-startup-id /home/paul/.bin/uuidclip
 

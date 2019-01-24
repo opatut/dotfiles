@@ -95,6 +95,11 @@ spotify|playerctl)
         exit 1
     esac
     ;;
+
+off)
+    exit 0
+    ;;
+
 *)
     echo "Unsupported player $PLAYER"
     exit 1

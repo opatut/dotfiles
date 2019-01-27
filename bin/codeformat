@@ -63,14 +63,12 @@ elif [[ "$1" == *.kt ]]; then
 elif [[ "$1" == *.rs ]]; then
     rustftm $1
 elif [[ "$1" == *.json ]]; then
-    set -x
     TMP=$(mktemp)
     yq -M . $1 > $TMP
     if [ $? == 0 ]; then
         mv $TMP $1
     fi
 elif [[ "$1" =~ ^.*\.ya?ml$ ]]; then
-    set -x
     TMP=$(mktemp)
     yq --yaml-output -M . $1 > $TMP
     if [ $? == 0 ]; then
@@ -81,7 +79,6 @@ elif [[ "$1" =~ ^.*\.html?$ ]]; then
 elif [[ "$1" =~ ^.*\.(css|sass|scss|less)?$ ]]; then
     prettier $PRETTIER_ARGS --write $1
 elif [[ "$1" == *.sql ]]; then
-    set -x
     TMP=$(mktemp)
     cat $1 | sql-formatter-cli > $TMP
     if [ $? == 0 ]; then

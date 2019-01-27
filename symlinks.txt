@@ -10,8 +10,8 @@ spacemacs/spacemacs      ~/.spacemacs
 spacemacs/spacemacs_layers ~/.spacemacs_layers
 vim                      ~/.vim
 vim                      ~/.config/nvim/
-vim/config/gvimrc.vim    ~/.gvimrc
-vim/init.vim             ~/.vimrc
+vim/gvimrc.vim           ~/.gvimrc
+vim/vimrc.vim            ~/.vimrc
 xorg/Xdefaults           ~/.Xdefaults
 xorg/Xresources          ~/.Xresources
 xorg/xinitrc             ~/.xinitrc

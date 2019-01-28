@@ -1,13 +1,13 @@
 [Default Applications]
 application/pdf=evince.desktop
 message/rfc822=userapp-Thunderbird-EZJFSY.desktop
-text/html=chromium.desktop
-x-scheme-handler/about=chromium.desktop
-x-scheme-handler/http=chromium.desktop
-x-scheme-handler/https=chromium.desktop
+text/html=firefox.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
 x-scheme-handler/mailto=userapp-Thunderbird-EZJFSY.desktop
 x-scheme-handler/nylas=nylas.desktop
-x-scheme-handler/unknown=chromium.desktop
+x-scheme-handler/unknown=firefox.desktop
 image/jpeg=eog.desktop
 image/png=eog.desktop
 text/plain=e.desktop

@@ -1,9 +1,0 @@
-i3pystatus
-netifaces
-psutil
-colour
-basiciw
-requests
-colorama
-pyyaml
-requests

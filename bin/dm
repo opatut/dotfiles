@@ -10,7 +10,7 @@
 # dm i[ntern]
 
 # The following variables can be overwritten in ~/.dmrc
-INTERN_NAME=eDP-1
+INTERN_NAME=eDP1
 EXTERN_NAME=auto
 INTERN_CONF=""  # Extra configuration (e.g. rotation) for internal monitor
 EXTERN_CONF=""  # Extra configuration (e.g. rotation) for external monitor

@@ -16,22 +16,19 @@ if [[ "$1" == "-" ]]; then
     fi
 fi
 
-TAB_WIDTH=$(editorconfig $(realpath $0) | grep tab_width | sed 's/^.*\=//')
+TAB_WIDTH=$(editorconfig $(realpath $1) | grep tab_width | sed 's/^.*\=//')
 TAB_WIDTH=${TAB_WIDTH:-2}
 PRETTIER_ARGS="--single-quote --trailing-comma es5 --no-semi --print-width 100 --no-bracket-spacing --jsx-bracket-same-line --write --tab-width $TAB_WIDTH"
 
 if [[ "$1" =~ ^.*(js|ts)$ ]]; then
-    # check if `scripts.format` exists in package.json, used for formatting
-    # a JS file in the repo-specific manner
-    FORMAT_SCRIPT=$(test -f package.json && cat package.json | jq --raw-output '.scripts.format // empty' || echo '')
-
-    if [ -n "$FORMAT_SCRIPT" ]; then
-        npm run format $1
-    elif [ -f ./node_modules/.bin/prettier ]; then
-        ./node_modules/.bin/prettier $PRETTIER_ARGS $1
-    else
-        prettier $PRETTIER_ARGS $1
+    ESLINT=$(which eslint)
+    if [ -f "./node_modules/.bin/eslint_d" ]; then
+        ESLINT="./node_modules/.bin/eslint_d"
+    elif [ -f "./node_modules/.bin/eslint" ]; then
+        ESLINT="./node_modules/.bin/eslint"
     fi
+
+    $ESLINT --fix --no-ignore $1
 elif [[ "$1" =~ ^.*(h|c|cpp|c\+\+|H|hpp|h\+\+|hxx|cxx|cs|ino)$ ]]; then
     astyle \
         --style=java \

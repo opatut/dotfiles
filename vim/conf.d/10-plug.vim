@@ -3,7 +3,7 @@ call plug#begin()
 """ Unsorted
 Plug 'ervandew/supertab' " ??
 Plug 'ompugao/ctrlp-history'
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-abolish'
 " Plug 'tpope/vim-fugitive'
@@ -15,6 +15,9 @@ Plug 'tpope/vim-eunuch'
 Plug 'scrooloose/nerdtree'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
+Plug 'toddfoster/ctrlp-notes'
+Plug 'vimwiki/vimwiki'
+Plug 'jamessan/vim-gnupg'
 
 """ Syntax checking (yes, I tried all of these)
 "Plug 'q0LoCo/syntastic', {'branch': 'async'}
@@ -45,7 +48,7 @@ Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/regreplop.vim'
-Plug 'vim-scripts/matchit.zip'
+" Plug 'vim-scripts/matchit.zip'
 Plug 'bronson/vim-visual-star-search'
 Plug 'reedes/vim-pencil'
 Plug 'bogado/file-line'

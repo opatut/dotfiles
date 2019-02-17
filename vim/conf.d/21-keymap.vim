@@ -72,8 +72,6 @@ vmap <leader>c gc
 " Macro helper
 nnoremap <leader>q :norm @q<CR>
 vnoremap <leader>q :norm @q<CR>
-nnoremap <c-n> :norm<space>
-vnoremap <c-n> :norm<space>
 
 " Omnicomplete
 "inoremap <c-space> <C-X><C-O>
@@ -85,10 +83,14 @@ vnoremap <c-n> :norm<space>
 
 " CtrlP file switcher
 nnoremap <silent> <leader>p :CtrlPCurWD<CR>
+nnoremap <silent> <c-p> :CtrlPCurWD<CR>
 nnoremap <silent> <leader>o :CtrlPCurFile<CR>
 nnoremap <silent> <leader>r :CtrlPMRUFiles<CR>
 " nnoremap <silent> <c-j> :CtrlPLine<CR>
 cnoremap <c-r> <C-u>:CtrlPCmdHistory<CR>
+
+" <c-n> = "notes"
+nnoremap <c-n> :e /home/paul/documents/wiki/Mondas/General Notes.gpg.md<CR>
 
 " Buffer navigation
 nnoremap <leader><tab> :b#<CR>

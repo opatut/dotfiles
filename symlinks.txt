@@ -3,7 +3,7 @@ atom/keymap.cson         ~/.atom/keymap.cson
 bash/bashrc              ~/.bashrc
 git/gitconfig            ~/.gitconfig
 git/gitignore            ~/.gitignore
-i3                       ~/.i3
+i3                       ~/.config/i3
 ncmpcpp/config           ~/.ncmpcpp/config
 ssh/config               ~/.ssh/config
 spacemacs/spacemacs      ~/.spacemacs

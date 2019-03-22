@@ -20,6 +20,8 @@ TAB_WIDTH=$(editorconfig $(realpath $1) | grep tab_width | sed 's/^.*\=//')
 TAB_WIDTH=${TAB_WIDTH:-2}
 PRETTIER_ARGS="--single-quote --trailing-comma es5 --no-semi --print-width 100 --no-bracket-spacing --jsx-bracket-same-line --write --tab-width $TAB_WIDTH"
 
+shebang_bin=$(cat "$1" | grep -E '^#!/.*' | tr '/ ' '\n' | tail -n1)
+
 if [[ "$1" =~ ^.*(js|ts)$ ]]; then
     ESLINT=$(which eslint)
     if [ -f "./node_modules/.bin/eslint_d" ]; then
@@ -47,10 +49,11 @@ elif [[ "$1" == *.bib ]]; then
     TMP=$(mktemp)
     python ~/.dotfiles/externals/prettybib/prettybib.py --input=$1 --output=$TMP
     mv $TMP $1
-elif [[ "$1" == *.py ]]; then
+elif [[ "$1" == *.py || "$shebang_bin" =~ ^python[23]?$ ]]; then
     autopep8 \
         --in-place  \
         --max-line-length 160 \
+        --aggressive \
         $1
 
 elif [[ "$1" == *.go ]]; then

@@ -18,6 +18,8 @@ Plug 'xolox/vim-notes'
 Plug 'toddfoster/ctrlp-notes'
 Plug 'vimwiki/vimwiki'
 Plug 'jamessan/vim-gnupg'
+Plug 'vim-scripts/taglist.vim'
+Plug 'plytophogy/vim-virtualenv'
 
 """ Syntax checking (yes, I tried all of these)
 "Plug 'q0LoCo/syntastic', {'branch': 'async'}
@@ -40,7 +42,7 @@ Plug 'rakr/vim-one'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
 " Plug 'nixprime/cpsm', { 'do': './install.sh' }
-Plug 'ctrlpvim/ctrlp.vim' 
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gabesoft/vim-ags'
@@ -57,7 +59,7 @@ Plug 'bogado/file-line'
 Plug 'fatih/vim-go'
 Plug 'wizicer/vim-jison'
 Plug 'alunny/pegjs-vim'
-Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-markdown'
 Plug 'jparise/vim-graphql'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'udalov/kotlin-vim'
@@ -67,6 +69,7 @@ Plug 'IN3D/vim-raml'
 Plug 'calviken/vim-gdscript3' " godot game engine
 Plug 'leafgarland/typescript-vim'
 Plug 'sirtaj/vim-openscad' " OpenSCAD
+" Plug 'suan/vim-instant-markdown'
 
 """ Javascript
 " Plug 'kern/vim-es7'
@@ -87,7 +90,7 @@ Plug 'elzr/vim-json'
 Plug 'groenewege/vim-less'
 Plug 'hail2u/vim-css3-syntax'
 
-""" Disabled 
+""" Disabled
 "Plug 'airblade/vim-gitgutter'
 "Plug 'eagletmt/neco-ghc'
 

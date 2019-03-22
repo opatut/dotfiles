@@ -14,6 +14,8 @@ map \d "+d
 
 nnoremap <leader>y :let @+ = expand("%")<CR>
 
+nnoremap <silent> <c-t> :TlistToggle<CR>
+
 " Arrows in command mode
 cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>

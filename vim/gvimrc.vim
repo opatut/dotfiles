@@ -24,4 +24,6 @@ set background=dark
 " set guifont=Misc\ Tamsyn\ Regular\ 12
 " set guifont=Source\ Code\ Pro\ 12
 " set guifont=Roboto\ Mono\ 11
-set guifont=Inconsolata\ 14
+" set guifont=Inconsolata\ 14
+set guifont=Meslo\ LG\ L\ DZ\ Regular\ 10
+set linespace=-2

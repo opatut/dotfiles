@@ -3,7 +3,7 @@ let s:light_theme = "lucius"
 let s:light_theme_command = ":LuciusLight"
 
 " Dark themes: hybrid, wombat, wombat256mod, seattle, rootwater, solarized, one
-let s:dark_theme = "hybrid"
+let s:dark_theme = "one"
 let s:dark_theme_command = ""
 
 let g:one_allow_italics = 0

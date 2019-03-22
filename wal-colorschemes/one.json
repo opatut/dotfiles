@@ -1,6 +1,7 @@
 {
   "special": {
-    "background": "#282c34",
+    "backgroundx": "#282c34",
+    "background": "#000000",
     "foreground": "#abb2bf",
     "cursor": "#528bff"
   },

@@ -55,6 +55,10 @@ alias inode="node -i -e 'const lodash = require(\"lodash\"); for (const k in lod
 # Docker
 
 alias d='docker'
+alias dc='docker-compose'
+alias dcu='docker-compose up -d'
+alias dcd='docker-compose down'
+alias dr='docker restart'
 alias ds='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.RunningFor}}\t{{.Status}}\t{{.Image}}"'
 da() { docker $@ $(docker ps -q) }
 daa() { docker $@ $(docker ps -qa) }

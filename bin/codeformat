@@ -74,9 +74,7 @@ elif [[ "$1" =~ ^.*\.ya?ml$ ]]; then
     if [ $? == 0 ]; then
         mv $TMP $1
     fi
-elif [[ "$1" =~ ^.*\.html?$ ]]; then
-    tidy -utf8 -miq -wrap 0 --preserve-entities yes $1 
-elif [[ "$1" =~ ^.*\.(css|sass|scss|less)?$ ]]; then
+elif [[ "$1" =~ ^.*\.(html|css|sass|scss|less)?$ ]]; then
     prettier $PRETTIER_ARGS --write $1
 elif [[ "$1" == *.sql ]]; then
     TMP=$(mktemp)
